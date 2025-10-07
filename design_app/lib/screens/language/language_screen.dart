@@ -1,10 +1,7 @@
-// lib/screens/language/language_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:country_flags/country_flags.dart';
 import 'language_viewmodel.dart';
-import 'widgets/language_item.dart';  // Thêm import này
-import '../../models/language.dart';
+import 'widgets/language_item.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -35,7 +32,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
           Consumer<LanguageViewModel>(
             builder: (context, viewModel, child) {
               return IconButton(
-                onPressed: () => viewModel.saveAndApplyLanguage(context),
+                onPressed: () => viewModel.saveAndGoToIntro(context),
                 icon: const Icon(Icons.check),
               );
             },
@@ -50,7 +47,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             itemBuilder: (context, index) {
               final language = viewModel.availableLanguages[index];
               final isSelected = language == viewModel.selectedLanguage;
-              
+
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 child: LanguageItem(

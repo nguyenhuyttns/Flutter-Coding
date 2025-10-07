@@ -1,4 +1,3 @@
-// lib/screens/splash/splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'splash_viewmodel.dart';
@@ -32,8 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             children: [
               const Spacer(flex: 2),
-              
-              // Logo và text
+
               const AppLogo(),
               const SizedBox(height: 24),
               Text(
@@ -45,10 +43,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 AppConstants.appSubtitle,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
-              
+
               const Spacer(flex: 3),
-              
-              // Progress bar
+
               Consumer<SplashViewModel>(
                 builder: (context, viewModel, child) {
                   return Column(
@@ -65,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   );
                 },
               ),
-              
+
               const SizedBox(height: 16),
               Text(
                 'This section may contain advertising...',

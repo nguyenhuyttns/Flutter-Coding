@@ -1,4 +1,3 @@
-// lib/screens/language/widgets/language_item.dart
 import 'package:flutter/material.dart';
 import 'package:country_flags/country_flags.dart';
 import '../../../models/language.dart';
@@ -32,7 +31,6 @@ class LanguageItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Flag icon - sử dụng syntax đúng của country_flags
             SizedBox(
               width: 32,
               height: 24,
@@ -41,10 +39,9 @@ class LanguageItem extends StatelessWidget {
                 shape: const RoundedRectangle(4),
               ),
             ),
-            
+
             const SizedBox(width: 16),
-            
-            // Language name
+
             Expanded(
               child: Text(
                 language.name,
@@ -55,14 +52,9 @@ class LanguageItem extends StatelessWidget {
                 ),
               ),
             ),
-            
-            // Check icon for selected item
+
             if (isSelected)
-              const Icon(
-                Icons.check,
-                color: Colors.white,
-                size: 20,
-              ),
+              const Icon(Icons.check, color: Colors.white, size: 20),
           ],
         ),
       ),

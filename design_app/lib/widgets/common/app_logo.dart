@@ -1,10 +1,9 @@
-// lib/widgets/common/app_logo.dart
 import 'package:flutter/material.dart';
 import '../../config/constants.dart';
 
 class AppLogo extends StatelessWidget {
   final double size;
-  
+
   const AppLogo({super.key, this.size = 120});
 
   @override
@@ -28,7 +27,6 @@ class AppLogo extends StatelessWidget {
           AppImages.logo,
           fit: BoxFit.cover,
           errorBuilder: (context, error, stackTrace) {
-            // Nếu ảnh không load được, hiển thị icon backup
             return Container(
               decoration: BoxDecoration(
                 color: Colors.grey[800],

@@ -1,6 +1,5 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'config/app_config.dart';
 
 void main() {
