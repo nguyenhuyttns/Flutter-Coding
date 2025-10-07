@@ -63,8 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             onNextTap: viewModel.nextExpert,
                             onExpertTap:
                                 (expert) => viewModel.goToChat(context, expert),
-                            frameWidth: 200,
-                            frameHeight: 280,
+                            frameWidth: 220,
+                            frameHeight: 330,
                           ),
                         ),
 

@@ -9,15 +9,15 @@ class IntroSlideWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24.0),
+      padding: const EdgeInsets.all(0),
       child: Column(
         children: [
           Expanded(
-            flex: 6,
+            flex: 5,
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(0),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
@@ -27,7 +27,7 @@ class IntroSlideWidget extends StatelessWidget {
                 ],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(0),
                 child: Image.asset(
                   slide.imagePath,
                   fit: BoxFit.cover,
@@ -58,7 +58,7 @@ class IntroSlideWidget extends StatelessWidget {
                   slide.title,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 24,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),

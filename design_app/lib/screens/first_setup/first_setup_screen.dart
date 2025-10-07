@@ -5,13 +5,18 @@ import 'first_setup_viewmodel.dart';
 import '../../widgets/common/avatar_frame_widget.dart';
 import '../../widgets/common/avatar_grid_widget.dart';
 
+// lib/screens/first_setup/first_setup_screen.dart
+// lib/screens/first_setup/first_setup_screen.dart
 class FirstSetupScreen extends StatelessWidget {
   const FirstSetupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isKeyboardVisible = MediaQuery.of(context).viewInsets.bottom > 0;
+
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: const Text('Customize your Assistant'),
         backgroundColor: Colors.white,
@@ -26,6 +31,10 @@ class FirstSetupScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: SingleChildScrollView(
+                    physics:
+                        isKeyboardVisible
+                            ? const AlwaysScrollableScrollPhysics()
+                            : const NeverScrollableScrollPhysics(),
                     padding: const EdgeInsets.all(24.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,8 +43,8 @@ class FirstSetupScreen extends StatelessWidget {
                           child: AvatarFrameWidget(
                             imagePath: viewModel.selectedAvatar?.imagePath,
                             displayName: viewModel.assistantName,
-                            width: 200,
-                            height: 280,
+                            width: 220,
+                            height: 300,
                           ),
                         ),
 
@@ -135,6 +144,8 @@ class FirstSetupScreen extends StatelessWidget {
                               ],
                             ),
                           ),
+
+                        SizedBox(height: isKeyboardVisible ? 100 : 20),
                       ],
                     ),
                   ),
