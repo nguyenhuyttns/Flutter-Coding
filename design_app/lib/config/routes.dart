@@ -5,6 +5,7 @@ import '../screens/language/language_screen.dart';
 import '../screens/intro/intro_screen.dart';
 import '../screens/first_setup/first_setup_screen.dart';
 import '../screens/first_setup_description/first_setup_description_screen.dart';
+import '../screens/home/home_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -12,6 +13,7 @@ class AppRoutes {
   static const String intro = '/intro';
   static const String firstSetup = '/first-setup';
   static const String firstSetupDescription = '/first-setup-description';
+  static const String home = '/home';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -31,6 +33,9 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const FirstSetupDescriptionScreen(),
         );
+
+      case home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
 
       default:
         return MaterialPageRoute(

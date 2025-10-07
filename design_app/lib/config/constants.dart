@@ -33,25 +33,36 @@ class AppImages {
   static const String logo = '$_imagePath/logo.png';
 
   // Intro images
-  static const String intro1 = '$_imagePath/intro1.png';
-  static const String intro2 = '$_imagePath/intro2.png';
-  static const String intro3 = '$_imagePath/intro3.png';
-  static const String intro4 = '$_imagePath/intro4.png';
+  static const String intro1 = '$_imagePath/intro1.PNG';
+  static const String intro2 = '$_imagePath/intro2.PNG';
+  static const String intro3 = '$_imagePath/intro3.PNG';
+  static const String intro4 = '$_imagePath/intro4.PNG';
 
   // First setup images
-  static const String avatarFrame = '$_imagePath/avatakhung.png';
+  static const String avatarFrame = '$_imagePath/avatakhung.PNG';
 
   // Avatar images
-  static const String avatar1 = '$_imagePath/avata1.png';
-  static const String avatar2 = '$_imagePath/avata2.png';
-  static const String avatar3 = '$_imagePath/avata3.png';
-  static const String avatar4 = '$_imagePath/avata4.png';
-  static const String avatar5 = '$_imagePath/avata5.png';
-  static const String avatar6 = '$_imagePath/avata6.png';
-  static const String avatar7 = '$_imagePath/avata7.png';
-  static const String avatar8 = '$_imagePath/avata8.png';
-  static const String avatar9 = '$_imagePath/avata9.png';
-  static const String avatar10 = '$_imagePath/avata10.png';
-  static const String avatar11 = '$_imagePath/avata11.png';
-  static const String avatar12 = '$_imagePath/avata12.png';
+  static const String avatar1 = '$_imagePath/avata1.PNG';
+  static const String avatar2 = '$_imagePath/avata2.PNG';
+  static const String avatar3 = '$_imagePath/avata3.PNG';
+  static const String avatar4 = '$_imagePath/avata4.PNG';
+  static const String avatar5 = '$_imagePath/avata5.PNG';
+  static const String avatar6 = '$_imagePath/avata6.PNG';
+  static const String avatar7 = '$_imagePath/avata7.PNG';
+  static const String avatar8 = '$_imagePath/avata8.PNG';
+  static const String avatar9 = '$_imagePath/avata9.PNG';
+  static const String avatar10 = '$_imagePath/avata10.PNG';
+  static const String avatar11 = '$_imagePath/avata11.PNG';
+  static const String avatar12 = '$_imagePath/avata12.PNG';
+
+  static const String assistant1 = '$_imagePath/assistant1.PNG';
+  static const String assistant2 = '$_imagePath/assistant2.PNG';
+  static const String assistant3 = '$_imagePath/assistant3.PNG';
+  static const String assistant4 = '$_imagePath/assistant4.PNG';
+  static const String assistant5 = '$_imagePath/assistant5.PNG';
+  static const String assistant6 = '$_imagePath/assistant6.PNG';
+  static const String assistant7 = '$_imagePath/assistant7.PNG';
+  static const String assistant8 = '$_imagePath/assistant8.PNG';
+  static const String assistant9 = '$_imagePath/assistant9.PNG';
+  static const String assistant10 = '$_imagePath/assistant10.PNG';
 }

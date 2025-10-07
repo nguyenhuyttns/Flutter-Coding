@@ -136,7 +136,7 @@ class FirstSetupDescriptionViewModel extends ChangeNotifier {
       ]);
 
       debugPrint('Setup description saved successfully');
-      Navigator.of(context).pushReplacementNamed(AppRoutes.splash);
+      Navigator.of(context).pushReplacementNamed(AppRoutes.home);
     } catch (e) {
       _setError('Failed to save setup. Please try again.');
       debugPrint('Error saving setup description: $e');

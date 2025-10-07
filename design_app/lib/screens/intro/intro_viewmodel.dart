@@ -32,8 +32,8 @@ class IntroViewModel extends ChangeNotifier {
   }
 
   void goToMainApp(BuildContext context) {
-    Navigator.of(context).pushReplacementNamed(AppRoutes.firstSetup);
-    debugPrint('Navigate to first setup screen');
+    Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+    debugPrint('Navigate to home screen');
   }
 
   @override

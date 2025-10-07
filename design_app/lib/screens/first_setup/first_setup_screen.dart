@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'first_setup_viewmodel.dart';
-import 'widgets/avatar_frame_widget.dart';
-import 'widgets/avatar_grid_widget.dart';
+import '../../widgets/common/avatar_frame_widget.dart';
+import '../../widgets/common/avatar_grid_widget.dart';
 
 class FirstSetupScreen extends StatelessWidget {
   const FirstSetupScreen({super.key});
@@ -32,8 +32,10 @@ class FirstSetupScreen extends StatelessWidget {
                       children: [
                         Center(
                           child: AvatarFrameWidget(
-                            selectedAvatar: viewModel.selectedAvatar,
-                            assistantName: viewModel.assistantName,
+                            imagePath: viewModel.selectedAvatar?.imagePath,
+                            displayName: viewModel.assistantName,
+                            width: 200,
+                            height: 280,
                           ),
                         ),
 
