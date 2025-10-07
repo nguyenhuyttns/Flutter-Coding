@@ -5,8 +5,6 @@ import 'first_setup_viewmodel.dart';
 import '../../widgets/common/avatar_frame_widget.dart';
 import '../../widgets/common/avatar_grid_widget.dart';
 
-// lib/screens/first_setup/first_setup_screen.dart
-// lib/screens/first_setup/first_setup_screen.dart
 class FirstSetupScreen extends StatelessWidget {
   const FirstSetupScreen({super.key});
 

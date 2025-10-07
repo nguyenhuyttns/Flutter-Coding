@@ -9,6 +9,7 @@ import '../screens/intro/intro_viewmodel.dart';
 import '../screens/first_setup/first_setup_viewmodel.dart';
 import '../screens/first_setup_description/first_setup_description_viewmodel.dart';
 import '../screens/home/home_viewmodel.dart';
+import '../screens/chat/chat_viewmodel.dart';
 
 class AppConfig extends StatelessWidget {
   const AppConfig({super.key});
@@ -23,6 +24,7 @@ class AppConfig extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => FirstSetupViewModel()),
         ChangeNotifierProvider(create: (_) => FirstSetupDescriptionViewModel()),
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
+        ChangeNotifierProvider(create: (_) => ChatViewModel()),
       ],
       child: MaterialApp(
         title: 'ChiChi - AI Chat Characters',

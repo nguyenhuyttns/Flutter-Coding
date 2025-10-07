@@ -6,6 +6,8 @@ import '../screens/intro/intro_screen.dart';
 import '../screens/first_setup/first_setup_screen.dart';
 import '../screens/first_setup_description/first_setup_description_screen.dart';
 import '../screens/home/home_screen.dart';
+import '../screens/chat/chat_screen.dart';
+import '../models/expert.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -14,6 +16,7 @@ class AppRoutes {
   static const String firstSetup = '/first-setup';
   static const String firstSetupDescription = '/first-setup-description';
   static const String home = '/home';
+  static const String chat = '/chat';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -36,6 +39,10 @@ class AppRoutes {
 
       case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+
+      case chat:
+        final expert = settings.arguments as Expert?;
+        return MaterialPageRoute(builder: (_) => ChatScreen(expert: expert));
 
       default:
         return MaterialPageRoute(

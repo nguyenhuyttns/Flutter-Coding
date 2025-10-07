@@ -1,5 +1,6 @@
 // lib/screens/home/widgets/bottom_navigation.dart
 import 'package:flutter/material.dart';
+import '../../../config/routes.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   final int currentIndex;
@@ -8,79 +9,77 @@ class CustomBottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.end,
+    return SizedBox(
+      height: 100,
+      child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: _buildNavItem(
-              icon: Icons.home_outlined,
-              label: 'Home',
-              isActive: currentIndex == 0,
-              onTap: () {},
-            ),
-          ),
-
-          // Chat button - lệch lên
-          Transform.translate(
-            offset: const Offset(0, -50),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 80,
             child: Container(
-              width: 60,
-              height: 60,
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFF66BB6A), Color(0xFF4CAF50)],
-                ),
-                shape: BoxShape.circle,
+                color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF4CAF50).withOpacity(0.4),
-                    blurRadius: 15,
-                    offset: const Offset(0, 6),
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: const Offset(0, -2),
                   ),
                 ],
               ),
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(30),
-                  onTap: () {
-                    // TODO: Navigate to chat
-                  },
-                  child: const Icon(
-                    Icons.chat_bubble_outline,
-                    color: Colors.white,
-                    size: 28,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _buildNavItem(
+                    icon: Icons.home_outlined,
+                    label: 'Home',
+                    isActive: currentIndex == 0,
+                    onTap: () {},
                   ),
-                ),
+
+                  const SizedBox(width: 56),
+
+                  _buildNavItem(
+                    icon: Icons.history,
+                    label: 'History',
+                    isActive: currentIndex == 2,
+                    onTap: () {},
+                  ),
+                ],
               ),
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: _buildNavItem(
-              icon: Icons.history,
-              label: 'History',
-              isActive: currentIndex == 2,
+          Positioned(
+            top: 0,
+            left: MediaQuery.of(context).size.width / 2 - 28,
+            child: GestureDetector(
               onTap: () {
-                // TODO: Navigate to history
+                Navigator.of(context).pushNamed(AppRoutes.chat);
               },
+              child: Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF4CAF50),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF4CAF50).withOpacity(0.3),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: const Icon(
+                  Icons.chat_bubble_outline,
+                  color: Colors.white,
+                  size: 28,
+                ),
+              ),
             ),
           ),
         ],
@@ -97,45 +96,26 @@ class CustomBottomNavigation extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               icon,
               color: isActive ? const Color(0xFF4CAF50) : Colors.grey[600],
-              size: 30,
+              size: 28,
             ),
             const SizedBox(height: 4),
             Text(
               label,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 14,
                 color: isActive ? const Color(0xFF4CAF50) : Colors.grey[600],
-                fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
+                fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildFloatingNavItem({
-    required IconData icon,
-    required bool isActive,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 56,
-        height: 56,
-        decoration: const BoxDecoration(
-          color: Color(0xFF4CAF50),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(icon, color: Colors.white, size: 28),
       ),
     );
   }

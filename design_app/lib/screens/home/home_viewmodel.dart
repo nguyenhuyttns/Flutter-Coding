@@ -68,8 +68,7 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   void goToChat(BuildContext context, Expert expert) {
-    // TODO: Navigate to chat with selected expert
-    debugPrint('Chat with ${expert.name}');
+    Navigator.of(context).pushNamed(AppRoutes.chat, arguments: expert);
   }
 
   void goToSettings(BuildContext context) {
