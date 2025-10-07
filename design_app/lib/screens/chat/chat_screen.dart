@@ -9,8 +9,9 @@ import 'widgets/message_input.dart';
 
 class ChatScreen extends StatefulWidget {
   final Expert? expert;
+  final bool showDeleteButton;
 
-  const ChatScreen({super.key, this.expert});
+  const ChatScreen({super.key, this.expert, this.showDeleteButton = false});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -23,6 +24,16 @@ class _ChatScreenState extends State<ChatScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<ChatViewModel>().initializeChat(expert: widget.expert);
     });
+  }
+
+  void _onDeleteChat() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Chat history deleted'),
+        backgroundColor: Colors.red,
+      ),
+    );
+    Navigator.of(context).pop(); // Go back after delete
   }
 
   @override
@@ -39,6 +50,9 @@ class _ChatScreenState extends State<ChatScreen> {
                   title: viewModel.chatTitle,
                   subtitle: viewModel.chatSubtitle,
                   onBackPressed: () => Navigator.of(context).pop(),
+                  onDeletePressed:
+                      widget.showDeleteButton ? _onDeleteChat : null,
+                  showDeleteButton: widget.showDeleteButton,
                 ),
 
                 Expanded(

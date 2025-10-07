@@ -72,8 +72,7 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   void goToSettings(BuildContext context) {
-    // TODO: Navigate to settings
-    debugPrint('Go to settings');
+    Navigator.of(context).pushNamed(AppRoutes.settings);
   }
 
   @override

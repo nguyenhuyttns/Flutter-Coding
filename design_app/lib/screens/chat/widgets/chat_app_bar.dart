@@ -6,12 +6,16 @@ class ChatAppBar extends StatelessWidget {
   final String title;
   final String subtitle;
   final VoidCallback onBackPressed;
+  final VoidCallback? onDeletePressed;
+  final bool showDeleteButton;
 
   const ChatAppBar({
     super.key,
     required this.title,
     required this.subtitle,
     required this.onBackPressed,
+    this.onDeletePressed,
+    this.showDeleteButton = false,
   });
 
   void _showFeedbackBottomSheet(BuildContext context) {
@@ -20,6 +24,95 @@ class ChatAppBar extends StatelessWidget {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => const FeedbackBottomSheet(),
+    );
+  }
+
+  void _showDeleteConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (context) => Dialog(
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    'Are you sure you want to delete this chat history?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black87,
+                      height: 1.5,
+                    ),
+                  ),
+
+                  const SizedBox(height: 32),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            side: const BorderSide(
+                              color: Color(0xFF4CAF50),
+                              width: 1,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                          ),
+                          child: const Text(
+                            'Cancel',
+                            style: TextStyle(
+                              color: Color(0xFF4CAF50),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(width: 12),
+
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            onDeletePressed?.call();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            elevation: 0,
+                          ),
+                          child: const Text(
+                            'Delete',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
     );
   }
 
@@ -48,10 +141,10 @@ class ChatAppBar extends StatelessWidget {
 
           Expanded(
             child: Text(
-              '$title Assistant',
+              title,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 23,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
               ),
@@ -59,8 +152,14 @@ class ChatAppBar extends StatelessWidget {
           ),
 
           IconButton(
-            onPressed: () => _showFeedbackBottomSheet(context),
-            icon: const Icon(Icons.inbox, color: Colors.black54),
+            onPressed:
+                showDeleteButton
+                    ? () => _showDeleteConfirmation(context)
+                    : () => _showFeedbackBottomSheet(context),
+            icon: Icon(
+              showDeleteButton ? Icons.delete_outline : Icons.inbox,
+              color: showDeleteButton ? Colors.red : Colors.black54,
+            ),
           ),
         ],
       ),

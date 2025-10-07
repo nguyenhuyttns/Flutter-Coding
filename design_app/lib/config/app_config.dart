@@ -1,4 +1,5 @@
 // lib/config/app_config.dart
+import 'package:design_app/screens/history/history_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'routes.dart';
@@ -10,6 +11,8 @@ import '../screens/first_setup/first_setup_viewmodel.dart';
 import '../screens/first_setup_description/first_setup_description_viewmodel.dart';
 import '../screens/home/home_viewmodel.dart';
 import '../screens/chat/chat_viewmodel.dart';
+import '../screens/settings/settings_viewmodel.dart';
+import '../screens/permission/permission_viewmodel.dart';
 
 class AppConfig extends StatelessWidget {
   const AppConfig({super.key});
@@ -25,6 +28,9 @@ class AppConfig extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => FirstSetupDescriptionViewModel()),
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
         ChangeNotifierProvider(create: (_) => ChatViewModel()),
+        ChangeNotifierProvider(create: (_) => HistoryViewModel()),
+        ChangeNotifierProvider(create: (_) => SettingsViewModel()),
+        ChangeNotifierProvider(create: (_) => PermissionViewModel()),
       ],
       child: MaterialApp(
         title: 'ChiChi - AI Chat Characters',

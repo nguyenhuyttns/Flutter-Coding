@@ -37,7 +37,14 @@ class CustomBottomNavigation extends StatelessWidget {
                     icon: Icons.home_outlined,
                     label: 'Home',
                     isActive: currentIndex == 0,
-                    onTap: () {},
+                    onTap: () {
+                      if (currentIndex != 0) {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          AppRoutes.home,
+                          (route) => false,
+                        );
+                      }
+                    },
                   ),
 
                   const SizedBox(width: 56),
@@ -46,7 +53,14 @@ class CustomBottomNavigation extends StatelessWidget {
                     icon: Icons.history,
                     label: 'History',
                     isActive: currentIndex == 2,
-                    onTap: () {},
+                    onTap: () {
+                      if (currentIndex != 2) {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          AppRoutes.history,
+                          (route) => false,
+                        );
+                      }
+                    },
                   ),
                 ],
               ),
