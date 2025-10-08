@@ -1,4 +1,6 @@
+// lib/config/themes.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 
 class AppThemes {
@@ -16,14 +18,16 @@ class AppThemes {
         centerTitle: true,
       ),
 
-      textTheme: const TextTheme(
-        headlineLarge: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: AppColors.textPrimary,
+      textTheme: GoogleFonts.poppinsTextTheme(
+        const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: AppColors.textPrimary,
+          ),
+          bodyLarge: TextStyle(fontSize: 16, color: AppColors.textPrimary),
+          bodyMedium: TextStyle(fontSize: 14, color: AppColors.textSecondary),
         ),
-        bodyLarge: TextStyle(fontSize: 16, color: AppColors.textPrimary),
-        bodyMedium: TextStyle(fontSize: 14, color: AppColors.textSecondary),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -53,14 +57,19 @@ class AppThemes {
         centerTitle: true,
       ),
 
-      textTheme: const TextTheme(
-        headlineLarge: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+      textTheme: GoogleFonts.robotoTextTheme(
+        const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          bodyLarge: TextStyle(fontSize: 16, color: Colors.white),
+          bodyMedium: TextStyle(
+            fontSize: 14,
+            color: AppColors.textSecondaryDark,
+          ),
         ),
-        bodyLarge: TextStyle(fontSize: 16, color: Colors.white),
-        bodyMedium: TextStyle(fontSize: 14, color: AppColors.textSecondaryDark),
       ),
     );
   }
