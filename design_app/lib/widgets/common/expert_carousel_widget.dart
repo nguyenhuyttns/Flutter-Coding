@@ -81,8 +81,8 @@ class ExpertCarouselWidget extends StatelessWidget {
                         height: 40,
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.black.withOpacity(0.7) // Dark mode navigation button
-                              : Colors.black.withOpacity(0.5), // Light mode navigation button
+                              ? Colors.black.withOpacity(0.7) 
+                              : Colors.black.withOpacity(0.5), 
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
@@ -108,8 +108,8 @@ class ExpertCarouselWidget extends StatelessWidget {
                         height: 40,
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.black.withOpacity(0.7) // Dark mode navigation button
-                              : Colors.black.withOpacity(0.5), // Light mode navigation button
+                              ? Colors.black.withOpacity(0.7) 
+                              : Colors.black.withOpacity(0.5), 
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
@@ -139,8 +139,8 @@ class ExpertCarouselWidget extends StatelessWidget {
                 color: currentIndex == index
                     ? AppColors.primary
                     : Theme.of(context).brightness == Brightness.dark
-                        ? Colors.grey[600] // Dark mode indicator
-                        : Colors.grey[300], // Light mode indicator
+                        ? Colors.grey[600] 
+                        : Colors.grey[300], 
                 borderRadius: BorderRadius.circular(4),
               ),
             ),

@@ -35,14 +35,14 @@ class SettingsListItem extends StatelessWidget {
                 height: 32,
                 decoration: BoxDecoration(
                   color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.grey.withOpacity(0.2) // Dark mode icon background
-                      : Colors.grey.withOpacity(0.1), // Light mode icon background
+                      ? Colors.grey.withOpacity(0.2) 
+                      : Colors.grey.withOpacity(0.1), 
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
                   item.icon,
                   size: 18,
-                  color: Theme.of(context).iconTheme.color, // Thay Colors.black87
+                  color: Theme.of(context).iconTheme.color, 
                 ),
               ),
               const SizedBox(width: 16),
@@ -52,14 +52,14 @@ class SettingsListItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+                    color: Theme.of(context).textTheme.bodyLarge?.color, 
                   ),
                 ),
               ),
               Icon(
                 Icons.arrow_forward_ios,
                 size: 16,
-                color: Theme.of(context).iconTheme.color?.withOpacity(0.6), // Theme icon color
+                color: Theme.of(context).iconTheme.color?.withOpacity(0.6), 
               ),
             ],
           ),

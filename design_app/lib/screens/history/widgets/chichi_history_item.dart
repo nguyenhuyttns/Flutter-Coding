@@ -24,14 +24,14 @@ class ChiChiHistoryItem extends StatelessWidget {
             Icon(
               Icons.chat_bubble_outline,
               size: 64,
-              color: Theme.of(context).iconTheme.color?.withOpacity(0.5), // Thay Colors.grey
+              color: Theme.of(context).iconTheme.color?.withOpacity(0.5), 
             ),
             const SizedBox(height: 16),
             Text(
               'No chat with ChiChi yet',
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                color: Theme.of(context).textTheme.bodyMedium?.color, 
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -61,16 +61,16 @@ class ChiChiHistoryItem extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+            color: Theme.of(context).textTheme.bodyLarge?.color, 
           ),
         ),
         trailing: Icon(
           Icons.chevron_right,
-          color: Theme.of(context).iconTheme.color, // Thay Colors.grey
+          color: Theme.of(context).iconTheme.color, 
           size: 24,
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        tileColor: Theme.of(context).cardColor, // Thay Colors.white
+        tileColor: Theme.of(context).cardColor, 
       ),
     );
   }

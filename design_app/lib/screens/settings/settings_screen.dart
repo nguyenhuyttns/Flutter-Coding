@@ -24,7 +24,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.white
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
       body: SafeArea(
         child: Consumer<SettingsViewModel>(
           builder: (context, viewModel, child) {

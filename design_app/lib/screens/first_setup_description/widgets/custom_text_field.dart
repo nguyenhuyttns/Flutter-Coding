@@ -28,7 +28,7 @@ class CustomTextField extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+            color: Theme.of(context).textTheme.bodyLarge?.color, 
           ),
         ),
         const SizedBox(height: 8),
@@ -37,34 +37,34 @@ class CustomTextField extends StatelessWidget {
           maxLines: maxLines,
           onChanged: onChanged,
           style: TextStyle(
-            color: Theme.of(context).textTheme.bodyLarge?.color, // Text color
+            color: Theme.of(context).textTheme.bodyLarge?.color, 
           ),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: TextStyle(
-              color: Theme.of(context).textTheme.bodyMedium?.color, // Hint color
+              color: Theme.of(context).textTheme.bodyMedium?.color, 
             ),
             filled: true,
-            fillColor: Theme.of(context).cardColor, // Thay Colors.white
+            fillColor: Theme.of(context).cardColor, 
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.grey[600]! // Dark mode border
-                    : Colors.grey[300]!, // Light mode border
+                    ? Colors.grey[600]! 
+                    : Colors.grey[300]!, 
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.grey[600]! // Dark mode border
-                    : Colors.grey[300]!, // Light mode border
+                    ? Colors.grey[600]! 
+                    : Colors.grey[300]!, 
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.primary, width: 2), // Focus border
+              borderSide: const BorderSide(color: AppColors.primary, width: 2), 
             ),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,

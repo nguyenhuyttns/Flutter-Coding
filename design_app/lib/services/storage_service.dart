@@ -9,7 +9,7 @@ class StorageService {
   static const String _chatbotRoleKey = 'chatbot_role';
   static const String _expertDetailsKey = 'expert_details';
   static const String _responseStyleKey = 'response_style';
-  static const String _themeKey = 'theme_mode'; // Thêm key cho theme
+  static const String _themeKey = 'theme_mode'; 
 
   Future<void> saveLanguageCode(String languageCode) async {
     final prefs = await SharedPreferences.getInstance();
@@ -81,7 +81,6 @@ class StorageService {
     return prefs.getString(_responseStyleKey);
   }
 
-  // Thêm methods cho theme
   Future<String?> getThemeMode() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_themeKey);

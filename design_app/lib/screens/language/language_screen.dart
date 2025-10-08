@@ -23,16 +23,16 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.grey[50]
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
       appBar: AppBar(
         title: Text(
           'Language',
-          style: Theme.of(context).textTheme.headlineMedium, // Sử dụng theme text style
+          style: Theme.of(context).textTheme.headlineMedium, 
         ),
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor, // Thay Colors.white
-        foregroundColor: Theme.of(context).appBarTheme.foregroundColor, // Thay Colors.black
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor, 
+        foregroundColor: Theme.of(context).appBarTheme.foregroundColor, 
         elevation: 0,
-        iconTheme: Theme.of(context).appBarTheme.iconTheme, // Sử dụng theme icon
+        iconTheme: Theme.of(context).appBarTheme.iconTheme, 
         actions: [
           Consumer<LanguageViewModel>(
             builder: (context, viewModel, child) {
@@ -40,7 +40,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 onPressed: () => viewModel.saveAndGoToIntro(context),
                 icon: Icon(
                   Icons.check,
-                  color: Theme.of(context).iconTheme.color, // Sử dụng theme icon color
+                  color: Theme.of(context).iconTheme.color, 
                 ),
               );
             },

@@ -12,7 +12,7 @@ class ThankYouDialog extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: Theme.of(context).dialogTheme.backgroundColor, // Thay Colors.white
+          color: Theme.of(context).dialogTheme.backgroundColor, 
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -26,7 +26,7 @@ class ThankYouDialog extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
+                  color: Theme.of(context).textTheme.headlineMedium?.color, 
                 ),
               ),
             ),
@@ -37,7 +37,7 @@ class ThankYouDialog extends StatelessWidget {
                 'Thank you for taking the time to rate us. I\'m really appreciate that.',
                 style: TextStyle(
                   fontSize: 14,
-                  color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                  color: Theme.of(context).textTheme.bodyMedium?.color, 
                   height: 1.4,
                 ),
               ),

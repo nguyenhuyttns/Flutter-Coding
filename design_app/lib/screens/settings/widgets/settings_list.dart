@@ -14,13 +14,13 @@ class SettingsList extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor, // Thay Colors.white
+        color: Theme.of(context).cardColor, 
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.3) // Dark mode shadow
-                : Colors.grey.withOpacity(0.1), // Light mode shadow
+                ? Colors.black.withOpacity(0.3) 
+                : Colors.grey.withOpacity(0.1), 
             spreadRadius: 1,
             blurRadius: 10,
             offset: const Offset(0, 2),
@@ -32,7 +32,7 @@ class SettingsList extends StatelessWidget {
         itemCount: items.length,
         separatorBuilder: (context, index) => Divider(
           height: 1,
-          color: Theme.of(context).dividerColor.withOpacity(0.5), // Theme divider color
+          color: Theme.of(context).dividerColor.withOpacity(0.5), 
           indent: 60,
         ),
         itemBuilder: (context, index) {

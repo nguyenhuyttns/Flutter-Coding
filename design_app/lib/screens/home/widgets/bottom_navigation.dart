@@ -21,12 +21,12 @@ class CustomBottomNavigation extends StatelessWidget {
             height: 80,
             child: Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).bottomNavigationBarTheme.backgroundColor, // Thay Colors.white
+                color: Theme.of(context).bottomNavigationBarTheme.backgroundColor, 
                 boxShadow: [
                   BoxShadow(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black.withOpacity(0.3) // Dark mode shadow
-                        : Colors.black.withOpacity(0.1), // Light mode shadow
+                        ? Colors.black.withOpacity(0.3) 
+                        : Colors.black.withOpacity(0.1), 
                     blurRadius: 10,
                     offset: const Offset(0, -2),
                   ),
@@ -83,7 +83,7 @@ class CustomBottomNavigation extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: AppColors.primary, // Sử dụng AppColors.primary
+                  color: AppColors.primary, 
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -124,7 +124,7 @@ class CustomBottomNavigation extends StatelessWidget {
               icon,
               color: isActive 
                   ? AppColors.primary 
-                  : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor, // Theme color
+                  : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor, 
               size: 28,
             ),
             const SizedBox(height: 4),
@@ -134,7 +134,7 @@ class CustomBottomNavigation extends StatelessWidget {
                 fontSize: 14,
                 color: isActive 
                     ? AppColors.primary 
-                    : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor, // Theme color
+                    : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor, 
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
               ),
             ),

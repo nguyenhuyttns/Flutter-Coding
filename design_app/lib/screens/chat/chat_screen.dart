@@ -34,13 +34,13 @@ class _ChatScreenState extends State<ChatScreen> {
         behavior: SnackBarBehavior.floating,
       ),
     );
-    Navigator.of(context).pop(); // Go back after delete
+    Navigator.of(context).pop(); 
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.grey[50]
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Consumer<ChatViewModel>(

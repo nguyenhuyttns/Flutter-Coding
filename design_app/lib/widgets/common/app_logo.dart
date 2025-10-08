@@ -17,8 +17,8 @@ class AppLogo extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.3) // Dark mode shadow
-                : Colors.black.withOpacity(0.1), // Light mode shadow
+                ? Colors.black.withOpacity(0.3) 
+                : Colors.black.withOpacity(0.1), 
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -33,8 +33,8 @@ class AppLogo extends StatelessWidget {
             return Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.grey[800] // Dark mode error background
-                    : Colors.grey[300], // Light mode error background
+                    ? Colors.grey[800] 
+                    : Colors.grey[300], 
                 borderRadius: BorderRadius.circular(24),
               ),
               child: const Icon(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'routes.dart';
 import 'themes.dart';
-import '../services/theme_service.dart'; // Thêm import
+import '../services/theme_service.dart'; 
 import '../screens/splash/splash_viewmodel.dart';
 import '../screens/language/language_viewmodel.dart';
 import '../screens/intro/intro_viewmodel.dart';
@@ -22,7 +22,7 @@ class AppConfig extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ThemeService()), // Thêm ThemeService đầu tiên
+        ChangeNotifierProvider(create: (_) => ThemeService()),
         ChangeNotifierProvider(create: (_) => SplashViewModel()),
         ChangeNotifierProvider(create: (_) => LanguageViewModel()),
         ChangeNotifierProvider(create: (_) => IntroViewModel()),
@@ -34,13 +34,13 @@ class AppConfig extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SettingsViewModel()),
         ChangeNotifierProvider(create: (_) => PermissionViewModel()),
       ],
-      child: Consumer<ThemeService>( // Wrap MaterialApp với Consumer
+      child: Consumer<ThemeService>( 
         builder: (context, themeService, child) {
           return MaterialApp(
             title: 'ChiChi - AI Chat Characters',
             theme: AppThemes.lightTheme,
             darkTheme: AppThemes.darkTheme,
-            themeMode: themeService.themeMode, // Sử dụng themeMode từ service
+            themeMode: themeService.themeMode, 
             initialRoute: AppRoutes.splash,
             onGenerateRoute: AppRoutes.generateRoute,
             debugShowCheckedModeBanner: false,

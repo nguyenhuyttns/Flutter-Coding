@@ -20,7 +20,7 @@ class _RatingDialogState extends State<RatingDialog> {
       child: Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: Theme.of(context).dialogTheme.backgroundColor, // Thay Colors.white
+          color: Theme.of(context).dialogTheme.backgroundColor, 
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -34,7 +34,7 @@ class _RatingDialogState extends State<RatingDialog> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
+                  color: Theme.of(context).textTheme.headlineMedium?.color, 
                 ),
               ),
             ),
@@ -45,7 +45,7 @@ class _RatingDialogState extends State<RatingDialog> {
                 'Let us know your experience 5 stars is the best on Google Play!',
                 style: TextStyle(
                   fontSize: 14,
-                  color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                  color: Theme.of(context).textTheme.bodyMedium?.color, 
                   height: 1.4,
                 ),
               ),
@@ -69,8 +69,8 @@ class _RatingDialogState extends State<RatingDialog> {
                         color: index < selectedRating
                             ? const Color(0xFFFFD700)
                             : Theme.of(context).brightness == Brightness.dark
-                                ? Colors.grey.withOpacity(0.5) // Dark mode unselected star
-                                : Colors.grey.withOpacity(0.3), // Light mode unselected star
+                                ? Colors.grey.withOpacity(0.5) 
+                                : Colors.grey.withOpacity(0.3), 
                       ),
                     ),
                   );
@@ -90,15 +90,15 @@ class _RatingDialogState extends State<RatingDialog> {
                       ),
                       side: BorderSide(
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.grey.withOpacity(0.5) // Dark mode border
-                            : Colors.grey.withOpacity(0.3), // Light mode border
+                            ? Colors.grey.withOpacity(0.5) 
+                            : Colors.grey.withOpacity(0.3), 
                       ),
                     ),
                     child: Text(
                       'Cancel',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Theme.of(context).textTheme.bodyMedium?.color, // Theme text color
+                        color: Theme.of(context).textTheme.bodyMedium?.color, 
                         fontWeight: FontWeight.w500,
                       ),
                     ),

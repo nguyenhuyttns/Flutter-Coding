@@ -11,7 +11,7 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.white
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
       body: SafeArea(
         child: Consumer<IntroViewModel>(
           builder: (context, viewModel, child) {

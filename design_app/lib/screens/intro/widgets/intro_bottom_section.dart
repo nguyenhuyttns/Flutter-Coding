@@ -37,8 +37,8 @@ class IntroBottomSection extends StatelessWidget {
                   color: currentIndex == index
                       ? AppColors.primary
                       : Theme.of(context).brightness == Brightness.dark
-                          ? Colors.grey[600] // Dark mode indicator color
-                          : Colors.grey[300], // Light mode indicator color
+                          ? Colors.grey[600] 
+                          : Colors.grey[300], 
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -52,7 +52,7 @@ class IntroBottomSection extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Theme.of(context).textTheme.bodyLarge?.color, // Thay AppColors.backgroundDark
+                color: Theme.of(context).textTheme.bodyLarge?.color, 
               ),
             ),
           ),

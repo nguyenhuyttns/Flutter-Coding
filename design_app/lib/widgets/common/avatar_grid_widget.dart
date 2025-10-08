@@ -40,8 +40,8 @@ class AvatarGridWidget extends StatelessWidget {
                     color: isSelected 
                         ? AppColors.primary 
                         : Theme.of(context).brightness == Brightness.dark
-                            ? Colors.grey[600]! // Dark mode border
-                            : Colors.grey[300]!, // Light mode border
+                            ? Colors.grey[600]! 
+                            : Colors.grey[300]!, 
                     width: isSelected ? 3 : 1,
                   ),
                   boxShadow: isSelected
@@ -62,8 +62,8 @@ class AvatarGridWidget extends StatelessWidget {
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.grey[700] // Dark mode placeholder
-                            : Colors.grey[300], // Light mode placeholder
+                            ? Colors.grey[700] 
+                            : Colors.grey[300], 
                         child: Icon(
                           Icons.person,
                           size: 32,

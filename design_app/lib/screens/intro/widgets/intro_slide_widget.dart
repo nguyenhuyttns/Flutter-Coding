@@ -22,8 +22,8 @@ class IntroSlideWidget extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black.withOpacity(0.3) // Dark mode shadow
-                        : Colors.black.withOpacity(0.1), // Light mode shadow
+                        ? Colors.black.withOpacity(0.3) 
+                        : Colors.black.withOpacity(0.1), 
                     blurRadius: 10,
                     offset: const Offset(0, 5),
                   ),
@@ -37,13 +37,13 @@ class IntroSlideWidget extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.grey[800] // Dark mode error container
-                          : Colors.grey[300], // Light mode error container
+                          ? Colors.grey[800] 
+                          : Colors.grey[300], 
                       child: Center(
                         child: Icon(
                           Icons.image_not_supported,
                           size: 64,
-                          color: Theme.of(context).iconTheme.color, // Theme icon color
+                          color: Theme.of(context).iconTheme.color, 
                         ),
                       ),
                     );
@@ -65,7 +65,7 @@ class IntroSlideWidget extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).textTheme.headlineLarge?.color, // Thay Colors.black87
+                    color: Theme.of(context).textTheme.headlineLarge?.color, 
                   ),
                 ),
                 const SizedBox(height: 12),

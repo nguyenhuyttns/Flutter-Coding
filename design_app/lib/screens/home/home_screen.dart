@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.white
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
       body: SafeArea(
         child: Consumer<HomeViewModel>(
           builder: (context, viewModel, child) {
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
+                            color: Theme.of(context).textTheme.headlineMedium?.color, 
                           ),
                         ),
 

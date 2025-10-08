@@ -55,7 +55,7 @@ class HistoryViewModel extends ChangeNotifier {
           builder:
               (context) => ChatScreen(
                 expert: expert,
-                showDeleteButton: true, // Show delete button khi vào từ history
+                showDeleteButton: true, 
               ),
         ),
       );
@@ -67,7 +67,7 @@ class HistoryViewModel extends ChangeNotifier {
       MaterialPageRoute(
         builder:
             (context) => const ChatScreen(
-              showDeleteButton: true, // Show delete button khi vào từ history
+              showDeleteButton: true, 
             ),
       ),
     );

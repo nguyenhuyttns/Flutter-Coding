@@ -63,7 +63,7 @@ class MessageBubble extends StatelessWidget {
               decoration: BoxDecoration(
                 color: isUser 
                     ? AppColors.primary 
-                    : Theme.of(context).cardColor, // Thay Colors.white
+                    : Theme.of(context).cardColor, 
                 borderRadius: BorderRadius.only(
                   topLeft: const Radius.circular(18),
                   topRight: const Radius.circular(18),
@@ -73,8 +73,8 @@ class MessageBubble extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black.withOpacity(0.3) // Dark mode shadow
-                        : Colors.black.withOpacity(0.05), // Light mode shadow
+                        ? Colors.black.withOpacity(0.3) 
+                        : Colors.black.withOpacity(0.05), 
                     blurRadius: 5,
                     offset: const Offset(0, 2),
                   ),
@@ -86,14 +86,14 @@ class MessageBubble extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.pause,
-                          color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                          color: Theme.of(context).textTheme.bodyMedium?.color, 
                           size: 16,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           message.content,
                           style: TextStyle(
-                            color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                            color: Theme.of(context).textTheme.bodyMedium?.color, 
                             fontSize: 14,
                           ),
                         ),
@@ -110,7 +110,7 @@ class MessageBubble extends StatelessWidget {
                             style: TextStyle(
                               color: isUser 
                                   ? Colors.white 
-                                  : Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+                                  : Theme.of(context).textTheme.bodyLarge?.color, 
                               fontSize: 16,
                             ),
                           ),
@@ -129,14 +129,14 @@ class MessageBubble extends StatelessWidget {
                                     padding: const EdgeInsets.all(3),
                                     decoration: BoxDecoration(
                                       color: Theme.of(context).brightness == Brightness.dark
-                                          ? Colors.grey[700] // Dark mode button background
-                                          : Colors.grey[200], // Light mode button background
+                                          ? Colors.grey[700] 
+                                          : Colors.grey[200], 
                                       shape: BoxShape.circle,
                                     ),
                                     child: Icon(
                                       Icons.error_outline,
                                       size: 12,
-                                      color: Theme.of(context).iconTheme.color, // Theme icon color
+                                      color: Theme.of(context).iconTheme.color, 
                                     ),
                                   ),
                                 ),
@@ -147,14 +147,14 @@ class MessageBubble extends StatelessWidget {
                                     padding: const EdgeInsets.all(3),
                                     decoration: BoxDecoration(
                                       color: Theme.of(context).brightness == Brightness.dark
-                                          ? Colors.grey[700] // Dark mode button background
-                                          : Colors.grey[200], // Light mode button background
+                                          ? Colors.grey[700] 
+                                          : Colors.grey[200], 
                                       shape: BoxShape.circle,
                                     ),
                                     child: Icon(
                                       Icons.flag_outlined,
                                       size: 12,
-                                      color: Theme.of(context).iconTheme.color, // Theme icon color
+                                      color: Theme.of(context).iconTheme.color, 
                                     ),
                                   ),
                                 ),
@@ -171,12 +171,12 @@ class MessageBubble extends StatelessWidget {
             CircleAvatar(
               radius: 16,
               backgroundColor: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.grey[600] // Dark mode avatar background
-                  : Colors.grey[300], // Light mode avatar background
+                  ? Colors.grey[600] 
+                  : Colors.grey[300], 
               child: Icon(
                 Icons.person,
                 size: 16,
-                color: Theme.of(context).iconTheme.color, // Theme icon color
+                color: Theme.of(context).iconTheme.color, 
               ),
             ),
           ],

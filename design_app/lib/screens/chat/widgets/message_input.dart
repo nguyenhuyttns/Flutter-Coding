@@ -21,12 +21,12 @@ class MessageInput extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.white
+        color: Theme.of(context).scaffoldBackgroundColor, 
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.3) // Dark mode shadow
-                : Colors.black.withOpacity(0.05), // Light mode shadow
+                ? Colors.black.withOpacity(0.3) 
+                : Colors.black.withOpacity(0.05), 
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
@@ -38,20 +38,20 @@ class MessageInput extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.grey[800] // Dark mode input background
-                    : Colors.grey[100], // Light mode input background
+                    ? Colors.grey[800] 
+                    : Colors.grey[100], 
                 borderRadius: BorderRadius.circular(25),
               ),
               child: TextField(
                 controller: controller,
                 onChanged: (_) => onChanged(),
                 style: TextStyle(
-                  color: Theme.of(context).textTheme.bodyLarge?.color, // Text color
+                  color: Theme.of(context).textTheme.bodyLarge?.color, 
                 ),
                 decoration: InputDecoration(
                   hintText: 'Talk with AI Assistant',
                   hintStyle: TextStyle(
-                    color: Theme.of(context).textTheme.bodyMedium?.color, // Hint color
+                    color: Theme.of(context).textTheme.bodyMedium?.color, 
                   ),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(
@@ -77,15 +77,15 @@ class MessageInput extends StatelessWidget {
                 color: canSend 
                     ? AppColors.primary 
                     : Theme.of(context).brightness == Brightness.dark
-                        ? Colors.grey[600] // Dark mode disabled button
-                        : Colors.grey[300], // Light mode disabled button
+                        ? Colors.grey[600] 
+                        : Colors.grey[300], 
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.send,
                 color: canSend 
                     ? Colors.white 
-                    : Theme.of(context).iconTheme.color, // Icon color
+                    : Theme.of(context).iconTheme.color, 
                 size: 20,
               ),
             ),

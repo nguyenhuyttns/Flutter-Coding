@@ -27,17 +27,17 @@ class _FirstSetupDescriptionScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.grey[50]
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         title: Text(
           'Customize your Assistant',
-          style: Theme.of(context).textTheme.headlineMedium, // Theme text style
+          style: Theme.of(context).textTheme.headlineMedium, 
         ),
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor, // Thay Colors.white
-        foregroundColor: Theme.of(context).appBarTheme.foregroundColor, // Thay Colors.black
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor, 
+        foregroundColor: Theme.of(context).appBarTheme.foregroundColor, 
         elevation: 0,
         centerTitle: true,
-        iconTheme: Theme.of(context).appBarTheme.iconTheme, // Theme icon
+        iconTheme: Theme.of(context).appBarTheme.iconTheme, 
       ),
       body: Consumer<FirstSetupDescriptionViewModel>(
         builder: (context, viewModel, child) {
@@ -130,13 +130,13 @@ class _FirstSetupDescriptionScreenState
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.red[900]?.withOpacity(0.2) // Dark mode error background
-                                : Colors.red[50], // Light mode error background
+                                ? Colors.red[900]?.withOpacity(0.2) 
+                                : Colors.red[50], 
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
                               color: Theme.of(context).brightness == Brightness.dark
-                                  ? Colors.red[400]! // Dark mode error border
-                                  : Colors.red[200]!, // Light mode error border
+                                  ? Colors.red[400]! 
+                                  : Colors.red[200]!, 
                             ),
                           ),
                           child: Row(
@@ -144,8 +144,8 @@ class _FirstSetupDescriptionScreenState
                               Icon(
                                 Icons.error_outline,
                                 color: Theme.of(context).brightness == Brightness.dark
-                                    ? Colors.red[400] // Dark mode error icon
-                                    : Colors.red[600], // Light mode error icon
+                                    ? Colors.red[400] 
+                                    : Colors.red[600], 
                                 size: 20,
                               ),
                               const SizedBox(width: 8),
@@ -154,8 +154,8 @@ class _FirstSetupDescriptionScreenState
                                   viewModel.errorMessage,
                                   style: TextStyle(
                                     color: Theme.of(context).brightness == Brightness.dark
-                                        ? Colors.red[400] // Dark mode error text
-                                        : Colors.red[600], // Light mode error text
+                                        ? Colors.red[400] 
+                                        : Colors.red[600], 
                                     fontSize: 14,
                                   ),
                                 ),
@@ -171,10 +171,10 @@ class _FirstSetupDescriptionScreenState
               Container(
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor, // Background color
+                  color: Theme.of(context).scaffoldBackgroundColor, 
                   border: Border(
                     top: BorderSide(
-                      color: Theme.of(context).dividerColor, // Divider color
+                      color: Theme.of(context).dividerColor, 
                       width: 1,
                     ),
                   ),

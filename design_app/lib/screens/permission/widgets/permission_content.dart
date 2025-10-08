@@ -22,25 +22,23 @@ class PermissionContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Spacer(flex: 2),
-
-          // Permission title
           const Text(
             'Permission',
             style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
-              color: AppColors.primary, // Giữ màu primary
+              color: AppColors.primary, 
             ),
           ),
 
           const SizedBox(height: 8),
 
-          // Subtitle
+
           Text(
             'It\'s important!',
             style: TextStyle(
               fontSize: 16,
-              color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+              color: Theme.of(context).textTheme.bodyMedium?.color, 
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -51,13 +49,13 @@ class PermissionContent extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
             decoration: BoxDecoration(
-              color: Theme.of(context).cardColor, // Thay Colors.white
+              color: Theme.of(context).cardColor, 
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
                   color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black.withOpacity(0.3) // Dark mode shadow
-                      : Colors.grey.withOpacity(0.1), // Light mode shadow
+                      ? Colors.black.withOpacity(0.3) 
+                      : Colors.grey.withOpacity(0.1), 
                   spreadRadius: 1,
                   blurRadius: 10,
                   offset: const Offset(0, 2),
@@ -72,20 +70,20 @@ class PermissionContent extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+                    color: Theme.of(context).textTheme.bodyLarge?.color, 
                   ),
                 ),
                 Switch(
                   value: isAllowAccess,
                   onChanged: onToggleAccess,
-                  activeColor: AppColors.primary, // Sử dụng AppColors.primary
+                  activeColor: AppColors.primary, 
                   activeTrackColor: AppColors.primary.withOpacity(0.3),
                   inactiveThumbColor: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.grey[600] // Dark mode inactive thumb
-                      : Colors.grey, // Light mode inactive thumb
+                      ? Colors.grey[600] 
+                      : Colors.grey, 
                   inactiveTrackColor: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.grey[600]?.withOpacity(0.3) // Dark mode inactive track
-                      : Colors.grey.withOpacity(0.3), // Light mode inactive track
+                      ? Colors.grey[600]?.withOpacity(0.3)
+                      : Colors.grey.withOpacity(0.3), 
                 ),
               ],
             ),

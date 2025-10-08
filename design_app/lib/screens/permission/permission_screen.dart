@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'permission_viewmodel.dart';
 import 'widgets/permission_header.dart';
 import 'widgets/permission_content.dart';
-import '../../config/constants.dart'; // Thêm import này
+import '../../config/constants.dart'; 
 
 class PermissionScreen extends StatefulWidget {
   const PermissionScreen({super.key});
@@ -26,8 +26,8 @@ class _PermissionScreenState extends State<PermissionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? AppColors.backgroundDark // Dark mode background
-          : const Color(0xFFF8F9FA), // Light mode background (giữ màu gốc)
+          ? AppColors.backgroundDark 
+          : const Color(0xFFF8F9FA), 
       body: SafeArea(
         child: Consumer<PermissionViewModel>(
           builder: (context, viewModel, child) {

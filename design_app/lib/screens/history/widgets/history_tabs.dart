@@ -18,8 +18,8 @@ class HistoryTabs extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Colors.grey[800] // Dark mode tab background
-            : Colors.grey[200], // Light mode tab background
+            ? Colors.grey[800] 
+            : Colors.grey[200], 
         borderRadius: BorderRadius.circular(25),
       ),
       child: Row(
@@ -43,7 +43,7 @@ class HistoryTabs extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: selectedIndex == 0
                           ? Colors.white
-                          : Theme.of(context).textTheme.bodyMedium?.color, // Theme color
+                          : Theme.of(context).textTheme.bodyMedium?.color, 
                     ),
                   ),
                 ),
@@ -69,7 +69,7 @@ class HistoryTabs extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: selectedIndex == 1
                           ? Colors.white
-                          : Theme.of(context).textTheme.bodyMedium?.color, // Theme color
+                          : Theme.of(context).textTheme.bodyMedium?.color, 
                     ),
                   ),
                 ),

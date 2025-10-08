@@ -27,14 +27,14 @@ class LanguageItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected 
               ? AppColors.primary 
-              : Theme.of(context).cardColor, // Thay Colors.white
+              : Theme.of(context).cardColor, 
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isSelected 
                 ? AppColors.primary 
                 : isDarkMode 
-                    ? Colors.grey[600]! // Dark mode border
-                    : Colors.grey[300]!, // Light mode border
+                    ? Colors.grey[600]! 
+                    : Colors.grey[300]!, 
             width: 1,
           ),
         ),
@@ -58,7 +58,7 @@ class LanguageItem extends StatelessWidget {
                   fontSize: 16,
                   color: isSelected 
                       ? Colors.white 
-                      : Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+                      : Theme.of(context).textTheme.bodyLarge?.color, 
                   fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
                 ),
               ),

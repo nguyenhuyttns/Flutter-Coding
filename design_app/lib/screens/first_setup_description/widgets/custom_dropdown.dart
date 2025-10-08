@@ -25,7 +25,7 @@ class CustomDropdown<T> extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+            color: Theme.of(context).textTheme.bodyLarge?.color, 
           ),
         ),
         const SizedBox(height: 8),
@@ -33,12 +33,12 @@ class CustomDropdown<T> extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
-            color: Theme.of(context).cardColor, // Thay Colors.white
+            color: Theme.of(context).cardColor, 
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.grey[600]! // Dark mode border
-                  : Colors.grey[300]!, // Light mode border
+                  ? Colors.grey[600]! 
+                  : Colors.grey[300]!, 
             ),
           ),
           child: DropdownButtonHideUnderline(
@@ -47,7 +47,7 @@ class CustomDropdown<T> extends StatelessWidget {
               hint: Text(
                 'Select $label',
                 style: TextStyle(
-                  color: Theme.of(context).textTheme.bodyMedium?.color, // Theme hint color
+                  color: Theme.of(context).textTheme.bodyMedium?.color, 
                 ),
               ),
               isExpanded: true,
@@ -55,13 +55,13 @@ class CustomDropdown<T> extends StatelessWidget {
               onChanged: onChanged,
               icon: Icon(
                 Icons.keyboard_arrow_down,
-                color: Theme.of(context).iconTheme.color, // Theme icon color
+                color: Theme.of(context).iconTheme.color, 
               ),
               style: TextStyle(
-                color: Theme.of(context).textTheme.bodyLarge?.color, // Theme text color
+                color: Theme.of(context).textTheme.bodyLarge?.color, 
                 fontSize: 16,
               ),
-              dropdownColor: Theme.of(context).cardColor, // Dropdown background
+              dropdownColor: Theme.of(context).cardColor, 
             ),
           ),
         ),

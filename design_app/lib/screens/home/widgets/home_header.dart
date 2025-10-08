@@ -11,12 +11,12 @@ class HomeHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       decoration: BoxDecoration(
-        color: Theme.of(context).appBarTheme.backgroundColor, // Thay Colors.white
+        color: Theme.of(context).appBarTheme.backgroundColor, 
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.2) // Dark mode shadow
-                : Colors.black.withOpacity(0.05), // Light mode shadow
+                ? Colors.black.withOpacity(0.2) 
+                : Colors.black.withOpacity(0.05), 
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -30,7 +30,7 @@ class HomeHeader extends StatelessWidget {
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context).textTheme.headlineLarge?.color, // Thay Colors.black87
+              color: Theme.of(context).textTheme.headlineLarge?.color, 
             ),
           ),
 
@@ -39,7 +39,7 @@ class HomeHeader extends StatelessWidget {
             icon: Icon(
               Icons.settings,
               size: 26,
-              color: Theme.of(context).iconTheme.color, // Thay Colors.grey
+              color: Theme.of(context).iconTheme.color, 
             ),
           ),
         ],

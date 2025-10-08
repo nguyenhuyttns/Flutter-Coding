@@ -47,7 +47,7 @@ class ChatAppBar extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+                  color: Theme.of(context).textTheme.bodyLarge?.color, 
                   height: 1.5,
                 ),
               ),
@@ -60,7 +60,7 @@ class ChatAppBar extends StatelessWidget {
                     child: OutlinedButton(
                       onPressed: () => Navigator.of(context).pop(),
                       style: OutlinedButton.styleFrom(
-                        backgroundColor: Theme.of(context).dialogTheme.backgroundColor, // Theme background
+                        backgroundColor: Theme.of(context).dialogTheme.backgroundColor, 
                         side: const BorderSide(
                           color: AppColors.primary,
                           width: 1,
@@ -121,12 +121,12 @@ class ChatAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Theme.of(context).appBarTheme.backgroundColor, // Thay Colors.white
+        color: Theme.of(context).appBarTheme.backgroundColor, 
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.2) // Dark mode shadow
-                : Colors.black.withOpacity(0.05), // Light mode shadow
+                ? Colors.black.withOpacity(0.2) 
+                : Colors.black.withOpacity(0.05), 
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -138,7 +138,7 @@ class ChatAppBar extends StatelessWidget {
             onPressed: onBackPressed,
             icon: Icon(
               Icons.arrow_back,
-              color: Theme.of(context).appBarTheme.foregroundColor, // Thay Colors.black87
+              color: Theme.of(context).appBarTheme.foregroundColor, 
             ),
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(),
@@ -151,7 +151,7 @@ class ChatAppBar extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
+                color: Theme.of(context).textTheme.headlineMedium?.color, 
               ),
             ),
           ),
@@ -164,7 +164,7 @@ class ChatAppBar extends StatelessWidget {
               showDeleteButton ? Icons.delete_outline : Icons.inbox,
               color: showDeleteButton 
                   ? Colors.red 
-                  : Theme.of(context).iconTheme.color, // Thay Colors.black54
+                  : Theme.of(context).iconTheme.color, 
             ),
           ),
         ],

@@ -26,14 +26,14 @@ class ExpertHistoryList extends StatelessWidget {
             Icon(
               Icons.history,
               size: 64,
-              color: Theme.of(context).iconTheme.color?.withOpacity(0.5), // Thay Colors.grey
+              color: Theme.of(context).iconTheme.color?.withOpacity(0.5), 
             ),
             const SizedBox(height: 16),
             Text(
               'No chat history',
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                color: Theme.of(context).textTheme.bodyMedium?.color, 
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -56,8 +56,8 @@ class ExpertHistoryList extends StatelessWidget {
             leading: CircleAvatar(
               radius: 24,
               backgroundColor: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.grey[700] // Dark mode avatar background
-                  : Colors.grey[200], // Light mode avatar background
+                  ? Colors.grey[700] 
+                  : Colors.grey[200], 
               child: expert != null
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(24),
@@ -95,18 +95,18 @@ class ExpertHistoryList extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+                color: Theme.of(context).textTheme.bodyLarge?.color, 
               ),
             ),
             trailing: Icon(
               Icons.arrow_right_outlined,
-              color: Theme.of(context).iconTheme.color, // Thay Colors.grey
+              color: Theme.of(context).iconTheme.color, 
               size: 24,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            tileColor: Theme.of(context).cardColor, // Thay Colors.white
+            tileColor: Theme.of(context).cardColor, 
           ),
         );
       },

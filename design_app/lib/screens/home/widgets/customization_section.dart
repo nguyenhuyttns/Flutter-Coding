@@ -24,7 +24,7 @@ class CustomizationSection extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
+            color: Theme.of(context).textTheme.headlineMedium?.color, 
           ),
         ),
 
@@ -36,7 +36,7 @@ class CustomizationSection extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onCustomizeTap,
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primary, // Sử dụng AppColors.primary
+              backgroundColor: AppColors.primary, 
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),

@@ -26,8 +26,8 @@ class AvatarFrameWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.4) // Dark mode shadow
-                : Colors.black.withOpacity(0.1), // Light mode shadow
+                ? Colors.black.withOpacity(0.4) 
+                : Colors.black.withOpacity(0.1), 
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -51,8 +51,8 @@ class AvatarFrameWidget extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: Theme.of(context).brightness == Brightness.dark
-                          ? [const Color(0xFF2E3A2E), AppColors.primary] // Dark mode gradient
-                          : [const Color(0xFF2E3A2E), AppColors.primary], // Light mode gradient (same)
+                          ? [const Color(0xFF2E3A2E), AppColors.primary] 
+                          : [const Color(0xFF2E3A2E), AppColors.primary], 
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -75,8 +75,8 @@ class AvatarFrameWidget extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.grey[700] // Dark mode placeholder
-                          : Colors.grey[300], // Light mode placeholder
+                          ? Colors.grey[700] 
+                          : Colors.grey[300], 
                       child: Icon(
                         Icons.person,
                         size: 64,
@@ -98,7 +98,7 @@ class AvatarFrameWidget extends StatelessWidget {
                   displayName,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: Colors.white, // Giữ màu trắng để contrast với background
+                    color: Colors.white, 
                     fontSize: 14,
                     fontWeight: FontWeight.w900,
                     shadows: [
