@@ -1,5 +1,6 @@
 // lib/screens/permission/widgets/permission_content.dart
 import 'package:flutter/material.dart';
+import '../../../config/constants.dart';
 
 class PermissionContent extends StatelessWidget {
   final bool isAllowAccess;
@@ -28,18 +29,18 @@ class PermissionContent extends StatelessWidget {
             style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF4CAF50),
+              color: AppColors.primary, // Giữ màu primary
             ),
           ),
 
           const SizedBox(height: 8),
 
           // Subtitle
-          const Text(
+          Text(
             'It\'s important!',
             style: TextStyle(
               fontSize: 16,
-              color: Colors.grey,
+              color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -50,11 +51,13 @@ class PermissionContent extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).cardColor, // Thay Colors.white
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black.withOpacity(0.3) // Dark mode shadow
+                      : Colors.grey.withOpacity(0.1), // Light mode shadow
                   spreadRadius: 1,
                   blurRadius: 10,
                   offset: const Offset(0, 2),
@@ -64,21 +67,25 @@ class PermissionContent extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Allow access',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    color: Colors.black87,
+                    color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
                   ),
                 ),
                 Switch(
                   value: isAllowAccess,
                   onChanged: onToggleAccess,
-                  activeThumbColor: const Color(0xFF4CAF50),
-                  activeTrackColor: const Color(0xFF4CAF50).withOpacity(0.3),
-                  inactiveThumbColor: Colors.grey,
-                  inactiveTrackColor: Colors.grey.withOpacity(0.3),
+                  activeColor: AppColors.primary, // Sử dụng AppColors.primary
+                  activeTrackColor: AppColors.primary.withOpacity(0.3),
+                  inactiveThumbColor: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[600] // Dark mode inactive thumb
+                      : Colors.grey, // Light mode inactive thumb
+                  inactiveTrackColor: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[600]?.withOpacity(0.3) // Dark mode inactive track
+                      : Colors.grey.withOpacity(0.3), // Light mode inactive track
                 ),
               ],
             ),
@@ -92,7 +99,7 @@ class PermissionContent extends StatelessWidget {
             child: ElevatedButton(
               onPressed: onGetStarted,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF4CAF50),
+                backgroundColor: AppColors.primary,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),

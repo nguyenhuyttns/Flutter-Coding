@@ -1,3 +1,4 @@
+// lib/screens/intro/intro_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'intro_viewmodel.dart';
@@ -10,7 +11,7 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.white
       body: SafeArea(
         child: Consumer<IntroViewModel>(
           builder: (context, viewModel, child) {

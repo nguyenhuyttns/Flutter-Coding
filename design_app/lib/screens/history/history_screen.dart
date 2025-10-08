@@ -27,7 +27,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.grey[50]
       body: SafeArea(
         child: Consumer<HistoryViewModel>(
           builder: (context, viewModel, child) {
@@ -41,20 +41,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 ),
 
                 Expanded(
-                  child:
-                      viewModel.selectedTabIndex == 0
-                          ? ExpertHistoryList(
-                            histories: viewModel.expertHistories,
-                            onHistoryTap:
-                                (historyId, expertId) =>
-                                    viewModel.openExpertChat(context, expertId),
-                            onDeleteTap: viewModel.deleteExpertHistory,
-                          )
-                          : ChiChiHistoryItem(
-                            hasHistory: viewModel.hasChiChiHistory,
-                            onTap: () => viewModel.openChiChiChat(context),
-                            onDelete: viewModel.deleteChiChiHistory,
-                          ),
+                  child: viewModel.selectedTabIndex == 0
+                      ? ExpertHistoryList(
+                          histories: viewModel.expertHistories,
+                          onHistoryTap: (historyId, expertId) =>
+                              viewModel.openExpertChat(context, expertId),
+                          onDeleteTap: viewModel.deleteExpertHistory,
+                        )
+                      : ChiChiHistoryItem(
+                          hasHistory: viewModel.hasChiChiHistory,
+                          onTap: () => viewModel.openChiChiChat(context),
+                          onDelete: viewModel.deleteChiChiHistory,
+                        ),
                 ),
               ],
             );

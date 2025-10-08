@@ -1,3 +1,4 @@
+// lib/screens/intro/widgets/intro_slide_widget.dart
 import 'package:flutter/material.dart';
 import '../../../models/intro_slide.dart';
 
@@ -20,7 +21,9 @@ class IntroSlideWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(0),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.black.withOpacity(0.3) // Dark mode shadow
+                        : Colors.black.withOpacity(0.1), // Light mode shadow
                     blurRadius: 10,
                     offset: const Offset(0, 5),
                   ),
@@ -33,12 +36,14 @@ class IntroSlideWidget extends StatelessWidget {
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
-                      color: Colors.grey[300],
-                      child: const Center(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.grey[800] // Dark mode error container
+                          : Colors.grey[300], // Light mode error container
+                      child: Center(
                         child: Icon(
                           Icons.image_not_supported,
                           size: 64,
-                          color: Colors.grey,
+                          color: Theme.of(context).iconTheme.color, // Theme icon color
                         ),
                       ),
                     );
@@ -57,10 +62,10 @@ class IntroSlideWidget extends StatelessWidget {
                 Text(
                   slide.title,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: Theme.of(context).textTheme.headlineLarge?.color, // Thay Colors.black87
                   ),
                 ),
                 const SizedBox(height: 12),

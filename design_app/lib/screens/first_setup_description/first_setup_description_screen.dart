@@ -27,13 +27,17 @@ class _FirstSetupDescriptionScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.grey[50]
       appBar: AppBar(
-        title: const Text('Customize your Assistant'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        title: Text(
+          'Customize your Assistant',
+          style: Theme.of(context).textTheme.headlineMedium, // Theme text style
+        ),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor, // Thay Colors.white
+        foregroundColor: Theme.of(context).appBarTheme.foregroundColor, // Thay Colors.black
         elevation: 0,
         centerTitle: true,
+        iconTheme: Theme.of(context).appBarTheme.iconTheme, // Theme icon
       ),
       body: Consumer<FirstSetupDescriptionViewModel>(
         builder: (context, viewModel, child) {
@@ -48,13 +52,17 @@ class _FirstSetupDescriptionScreenState
                       CustomDropdown<String>(
                         label: 'Gender',
                         value: viewModel.selectedGender,
-                        items:
-                            viewModel.genderOptions.map((option) {
-                              return DropdownMenuItem(
-                                value: option.value,
-                                child: Text(option.label),
-                              );
-                            }).toList(),
+                        items: viewModel.genderOptions.map((option) {
+                          return DropdownMenuItem(
+                            value: option.value,
+                            child: Text(
+                              option.label,
+                              style: TextStyle(
+                                color: Theme.of(context).textTheme.bodyLarge?.color,
+                              ),
+                            ),
+                          );
+                        }).toList(),
                         onChanged: viewModel.selectGender,
                       ),
 
@@ -63,13 +71,17 @@ class _FirstSetupDescriptionScreenState
                       CustomDropdown<Language>(
                         label: 'Language',
                         value: viewModel.selectedLanguage,
-                        items:
-                            viewModel.availableLanguages.map((language) {
-                              return DropdownMenuItem(
-                                value: language,
-                                child: Text(language.name),
-                              );
-                            }).toList(),
+                        items: viewModel.availableLanguages.map((language) {
+                          return DropdownMenuItem(
+                            value: language,
+                            child: Text(
+                              language.name,
+                              style: TextStyle(
+                                color: Theme.of(context).textTheme.bodyLarge?.color,
+                              ),
+                            ),
+                          );
+                        }).toList(),
                         onChanged: viewModel.selectLanguage,
                       ),
 
@@ -97,13 +109,17 @@ class _FirstSetupDescriptionScreenState
                       CustomDropdown<String>(
                         label: 'Response Style',
                         value: viewModel.selectedResponseStyle,
-                        items:
-                            viewModel.responseStyleOptions.map((option) {
-                              return DropdownMenuItem(
-                                value: option.value,
-                                child: Text(option.label),
-                              );
-                            }).toList(),
+                        items: viewModel.responseStyleOptions.map((option) {
+                          return DropdownMenuItem(
+                            value: option.value,
+                            child: Text(
+                              option.label,
+                              style: TextStyle(
+                                color: Theme.of(context).textTheme.bodyLarge?.color,
+                              ),
+                            ),
+                          );
+                        }).toList(),
                         onChanged: viewModel.selectResponseStyle,
                       ),
 
@@ -113,15 +129,23 @@ class _FirstSetupDescriptionScreenState
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Colors.red[50],
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Colors.red[900]?.withOpacity(0.2) // Dark mode error background
+                                : Colors.red[50], // Light mode error background
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.red[200]!),
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.red[400]! // Dark mode error border
+                                  : Colors.red[200]!, // Light mode error border
+                            ),
                           ),
                           child: Row(
                             children: [
                               Icon(
                                 Icons.error_outline,
-                                color: Colors.red[600],
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.red[400] // Dark mode error icon
+                                    : Colors.red[600], // Light mode error icon
                                 size: 20,
                               ),
                               const SizedBox(width: 8),
@@ -129,7 +153,9 @@ class _FirstSetupDescriptionScreenState
                                 child: Text(
                                   viewModel.errorMessage,
                                   style: TextStyle(
-                                    color: Colors.red[600],
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Colors.red[400] // Dark mode error text
+                                        : Colors.red[600], // Light mode error text
                                     fontSize: 14,
                                   ),
                                 ),
@@ -144,14 +170,22 @@ class _FirstSetupDescriptionScreenState
 
               Container(
                 padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).scaffoldBackgroundColor, // Background color
+                  border: Border(
+                    top: BorderSide(
+                      color: Theme.of(context).dividerColor, // Divider color
+                      width: 1,
+                    ),
+                  ),
+                ),
                 child: SizedBox(
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed:
-                        viewModel.isLoading
-                            ? null
-                            : () => viewModel.saveSetup(context),
+                    onPressed: viewModel.isLoading
+                        ? null
+                        : () => viewModel.saveSetup(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF81C784),
                       foregroundColor: Colors.white,
@@ -160,25 +194,24 @@ class _FirstSetupDescriptionScreenState
                       ),
                       elevation: 0,
                     ),
-                    child:
-                        viewModel.isLoading
-                            ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.white,
-                                ),
-                              ),
-                            )
-                            : const Text(
-                              'Save',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                    child: viewModel.isLoading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
                               ),
                             ),
+                          )
+                        : const Text(
+                            'Save',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                   ),
                 ),
               ),

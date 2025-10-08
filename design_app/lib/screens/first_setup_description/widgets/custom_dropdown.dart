@@ -22,10 +22,10 @@ class CustomDropdown<T> extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: Colors.black87,
+            color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
           ),
         ),
         const SizedBox(height: 8),
@@ -33,21 +33,35 @@ class CustomDropdown<T> extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).cardColor, // Thay Colors.white
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey[300]!),
+            border: Border.all(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.grey[600]! // Dark mode border
+                  : Colors.grey[300]!, // Light mode border
+            ),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<T>(
               value: value,
               hint: Text(
                 'Select $label',
-                style: TextStyle(color: Colors.grey[600]),
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.bodyMedium?.color, // Theme hint color
+                ),
               ),
               isExpanded: true,
               items: items,
               onChanged: onChanged,
-              icon: const Icon(Icons.keyboard_arrow_down),
+              icon: Icon(
+                Icons.keyboard_arrow_down,
+                color: Theme.of(context).iconTheme.color, // Theme icon color
+              ),
+              style: TextStyle(
+                color: Theme.of(context).textTheme.bodyLarge?.color, // Theme text color
+                fontSize: 16,
+              ),
+              dropdownColor: Theme.of(context).cardColor, // Dropdown background
             ),
           ),
         ),

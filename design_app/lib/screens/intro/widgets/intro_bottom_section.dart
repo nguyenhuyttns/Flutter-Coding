@@ -34,10 +34,11 @@ class IntroBottomSection extends StatelessWidget {
                 width: currentIndex == index ? 24 : 8,
                 height: 8,
                 decoration: BoxDecoration(
-                  color:
-                      currentIndex == index
-                          ? AppColors.primary
-                          : Colors.grey[300],
+                  color: currentIndex == index
+                      ? AppColors.primary
+                      : Theme.of(context).brightness == Brightness.dark
+                          ? Colors.grey[600] // Dark mode indicator color
+                          : Colors.grey[300], // Light mode indicator color
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -48,10 +49,10 @@ class IntroBottomSection extends StatelessWidget {
             onTap: isLastSlide ? onStart : onNext,
             child: Text(
               isLastSlide ? 'Start' : 'Next',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: AppColors.backgroundDark,
+                color: Theme.of(context).textTheme.bodyLarge?.color, // Thay AppColors.backgroundDark
               ),
             ),
           ),

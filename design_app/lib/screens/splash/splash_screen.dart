@@ -1,3 +1,4 @@
+// lib/screens/splash/splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'splash_viewmodel.dart';
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // ✅ Đã dùng theme
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -32,16 +33,16 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               const Spacer(flex: 2),
 
-              const AppLogo(),
+              const AppLogo(), // Cần kiểm tra widget này
               const SizedBox(height: 24),
               Text(
                 AppConstants.appName,
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: Theme.of(context).textTheme.headlineLarge, // ✅ Đã dùng theme
               ),
               const SizedBox(height: 8),
               Text(
                 AppConstants.appSubtitle,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.bodyMedium, // ✅ Đã dùng theme
               ),
 
               const Spacer(flex: 3),
@@ -54,10 +55,10 @@ class _SplashScreenState extends State<SplashScreen> {
                         '${(viewModel.progress * 100).toInt()}%',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.w500,
-                        ),
+                        ), // ✅ Đã dùng theme
                       ),
                       const SizedBox(height: 12),
-                      ProgressBar(progress: viewModel.progress),
+                      ProgressBar(progress: viewModel.progress), // Cần kiểm tra widget này
                     ],
                   );
                 },
@@ -66,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox(height: 16),
               Text(
                 'This section may contain advertising...',
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.bodyMedium, // ✅ Đã dùng theme
               ),
               const SizedBox(height: 32),
             ],

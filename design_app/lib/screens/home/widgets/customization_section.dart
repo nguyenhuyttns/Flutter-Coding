@@ -1,5 +1,6 @@
 // lib/screens/home/widgets/customization_section.dart
 import 'package:flutter/material.dart';
+import '../../../config/constants.dart';
 
 class CustomizationSection extends StatelessWidget {
   final String assistantName;
@@ -18,12 +19,12 @@ class CustomizationSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Customize your Assistant',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: Colors.black87,
+            color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
           ),
         ),
 
@@ -35,7 +36,7 @@ class CustomizationSection extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onCustomizeTap,
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF4CAF50),
+              backgroundColor: AppColors.primary, // Sử dụng AppColors.primary
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),

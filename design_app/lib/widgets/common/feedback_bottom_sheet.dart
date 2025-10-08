@@ -1,5 +1,6 @@
 // lib/widgets/common/feedback_bottom_sheet.dart
 import 'package:flutter/material.dart';
+import '../../config/constants.dart';
 
 class FeedbackBottomSheet extends StatefulWidget {
   const FeedbackBottomSheet({super.key});
@@ -64,9 +65,9 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      decoration: BoxDecoration(
+        color: Theme.of(context).bottomSheetTheme.backgroundColor ?? Theme.of(context).cardColor,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
       ),
       child: Padding(
         padding: EdgeInsets.only(
@@ -88,12 +89,16 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   style: TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w900,
-                    color: Colors.green,
+                    color: AppColors.primary,
                   ),
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).pop(),
-                  child: const Icon(Icons.close, color: Colors.grey, size: 24),
+                  child: Icon(
+                    Icons.close,
+                    color: Theme.of(context).iconTheme.color,
+                    size: 24,
+                  ),
                 ),
               ],
             ),
@@ -101,32 +106,48 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
             const SizedBox(height: 24),
 
             // Subject field
-            const Text(
+            Text(
               'Choose your subject',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w900,
-                color: Colors.black87,
+                color: Theme.of(context).textTheme.bodyLarge?.color,
               ),
             ),
             const SizedBox(height: 8),
             TextField(
               controller: _subjectController,
+              style: TextStyle(
+                color: Theme.of(context).textTheme.bodyLarge?.color,
+              ),
               decoration: InputDecoration(
                 hintText: 'Your subject',
-                hintStyle: TextStyle(color: Colors.grey[500], fontSize: 16),
+                hintStyle: TextStyle(
+                  color: Theme.of(context).textTheme.bodyMedium?.color,
+                  fontSize: 16,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey[300]!, width: 1),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[600]!
+                        : Colors.grey[300]!,
+                    width: 1,
+                  ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey[300]!, width: 1),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[600]!
+                        : Colors.grey[300]!,
+                    width: 1,
+                  ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
-                    color: Color(0xFF4CAF50),
+                    color: AppColors.primary,
                     width: 1,
                   ),
                 ),
@@ -135,40 +156,56 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   vertical: 12,
                 ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Theme.of(context).cardColor,
               ),
             ),
 
             const SizedBox(height: 20),
 
             // Feedback field
-            const Text(
+            Text(
               'What tip you like to give us?',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w900,
-                color: Colors.black87,
+                color: Theme.of(context).textTheme.bodyLarge?.color,
               ),
             ),
             const SizedBox(height: 8),
             TextField(
               controller: _feedbackController,
               maxLines: 4,
+              style: TextStyle(
+                color: Theme.of(context).textTheme.bodyLarge?.color,
+              ),
               decoration: InputDecoration(
                 hintText: 'Enter your feedback',
-                hintStyle: TextStyle(color: Colors.grey[500], fontSize: 16),
+                hintStyle: TextStyle(
+                  color: Theme.of(context).textTheme.bodyMedium?.color,
+                  fontSize: 16,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey[300]!, width: 1),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[600]!
+                        : Colors.grey[300]!,
+                    width: 1,
+                  ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey[300]!, width: 1),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[600]!
+                        : Colors.grey[300]!,
+                    width: 1,
+                  ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
-                    color: Color(0xFF4CAF50),
+                    color: AppColors.primary,
                     width: 1,
                   ),
                 ),
@@ -177,7 +214,7 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
                   vertical: 12,
                 ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Theme.of(context).cardColor,
               ),
             ),
 
@@ -190,32 +227,31 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
               child: ElevatedButton(
                 onPressed: _isLoading ? null : _sendFeedback,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4CAF50),
+                  backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                   elevation: 0,
                 ),
-                child:
-                    _isLoading
-                        ? const SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Colors.white,
-                            ),
-                          ),
-                        )
-                        : const Text(
-                          'Send',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w900,
+                child: _isLoading
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.white,
                           ),
                         ),
+                      )
+                    : const Text(
+                        'Send',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
               ),
             ),
           ],

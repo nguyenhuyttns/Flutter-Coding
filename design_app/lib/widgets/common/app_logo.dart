@@ -1,3 +1,4 @@
+// lib/widgets/common/app_logo.dart
 import 'package:flutter/material.dart';
 import '../../config/constants.dart';
 
@@ -15,7 +16,9 @@ class AppLogo extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black.withOpacity(0.3) // Dark mode shadow
+                : Colors.black.withOpacity(0.1), // Light mode shadow
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -29,7 +32,9 @@ class AppLogo extends StatelessWidget {
           errorBuilder: (context, error, stackTrace) {
             return Container(
               decoration: BoxDecoration(
-                color: Colors.grey[800],
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.grey[800] // Dark mode error background
+                    : Colors.grey[300], // Light mode error background
                 borderRadius: BorderRadius.circular(24),
               ),
               child: const Icon(

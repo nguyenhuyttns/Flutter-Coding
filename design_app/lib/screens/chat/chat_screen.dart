@@ -28,9 +28,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _onDeleteChat() {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Chat history deleted'),
+      SnackBar(
+        content: const Text('Chat history deleted'),
         backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
       ),
     );
     Navigator.of(context).pop(); // Go back after delete
@@ -39,7 +40,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.grey[50]
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Consumer<ChatViewModel>(
@@ -50,8 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   title: viewModel.chatTitle,
                   subtitle: viewModel.chatSubtitle,
                   onBackPressed: () => Navigator.of(context).pop(),
-                  onDeletePressed:
-                      widget.showDeleteButton ? _onDeleteChat : null,
+                  onDeletePressed: widget.showDeleteButton ? _onDeleteChat : null,
                   showDeleteButton: widget.showDeleteButton,
                 ),
 

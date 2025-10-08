@@ -1,6 +1,7 @@
 // lib/screens/chat/widgets/message_list.dart
 import 'package:flutter/material.dart';
 import '../../../models/message.dart';
+import '../../../config/constants.dart';
 import 'message_bubble.dart';
 
 class MessageList extends StatelessWidget {
@@ -16,7 +17,7 @@ class MessageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (messages.isEmpty) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -24,7 +25,7 @@ class MessageList extends StatelessWidget {
               'Start conversation',
               style: TextStyle(
                 fontSize: 18,
-                color: Color(0xFF4CAF50),
+                color: AppColors.primary,
                 fontWeight: FontWeight.w500,
               ),
             ),

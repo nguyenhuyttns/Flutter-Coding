@@ -9,22 +9,24 @@ class HistoryHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).appBarTheme.backgroundColor, // Thay Colors.white
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black.withOpacity(0.2) // Dark mode shadow
+                : Colors.black.withOpacity(0.05), // Light mode shadow
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
         ],
       ),
-      child: const Center(
+      child: Center(
         child: Text(
           'History',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
           ),
         ),
       ),

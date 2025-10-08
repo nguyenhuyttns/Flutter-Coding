@@ -25,7 +25,9 @@ class AvatarFrameWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black.withOpacity(0.4) // Dark mode shadow
+                : Colors.black.withOpacity(0.1), // Light mode shadow
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -45,10 +47,12 @@ class AvatarFrameWidget extends StatelessWidget {
                   width: width,
                   height: height,
                   decoration: BoxDecoration(
-                    gradient: const LinearGradient(
+                    gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Color(0xFF2E3A2E), Color(0xFF4CAF50)],
+                      colors: Theme.of(context).brightness == Brightness.dark
+                          ? [const Color(0xFF2E3A2E), AppColors.primary] // Dark mode gradient
+                          : [const Color(0xFF2E3A2E), AppColors.primary], // Light mode gradient (same)
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -70,11 +74,13 @@ class AvatarFrameWidget extends StatelessWidget {
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
-                      color: Colors.grey[300],
-                      child: const Icon(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.grey[700] // Dark mode placeholder
+                          : Colors.grey[300], // Light mode placeholder
+                      child: Icon(
                         Icons.person,
                         size: 64,
-                        color: Colors.grey,
+                        color: Theme.of(context).iconTheme.color?.withOpacity(0.5),
                       ),
                     );
                   },
@@ -92,7 +98,7 @@ class AvatarFrameWidget extends StatelessWidget {
                   displayName,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.white, // Giữ màu trắng để contrast với background
                     fontSize: 14,
                     fontWeight: FontWeight.w900,
                     shadows: [

@@ -1,5 +1,6 @@
 // lib/screens/chat/widgets/message_input.dart
 import 'package:flutter/material.dart';
+import '../../../config/constants.dart';
 
 class MessageInput extends StatelessWidget {
   final TextEditingController controller;
@@ -20,10 +21,12 @@ class MessageInput extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.white
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black.withOpacity(0.3) // Dark mode shadow
+                : Colors.black.withOpacity(0.05), // Light mode shadow
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
@@ -34,16 +37,24 @@ class MessageInput extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.grey[100],
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.grey[800] // Dark mode input background
+                    : Colors.grey[100], // Light mode input background
                 borderRadius: BorderRadius.circular(25),
               ),
               child: TextField(
                 controller: controller,
                 onChanged: (_) => onChanged(),
-                decoration: const InputDecoration(
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.bodyLarge?.color, // Text color
+                ),
+                decoration: InputDecoration(
                   hintText: 'Talk with AI Assistant',
+                  hintStyle: TextStyle(
+                    color: Theme.of(context).textTheme.bodyMedium?.color, // Hint color
+                  ),
                   border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(
+                  contentPadding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 12,
                   ),
@@ -63,12 +74,18 @@ class MessageInput extends StatelessWidget {
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                color: canSend ? const Color(0xFF4CAF50) : Colors.grey[300],
+                color: canSend 
+                    ? AppColors.primary 
+                    : Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[600] // Dark mode disabled button
+                        : Colors.grey[300], // Light mode disabled button
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.send,
-                color: canSend ? Colors.white : Colors.grey,
+                color: canSend 
+                    ? Colors.white 
+                    : Theme.of(context).iconTheme.color, // Icon color
                 size: 20,
               ),
             ),

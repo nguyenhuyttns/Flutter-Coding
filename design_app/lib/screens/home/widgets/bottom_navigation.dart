@@ -1,6 +1,7 @@
 // lib/screens/home/widgets/bottom_navigation.dart
 import 'package:flutter/material.dart';
 import '../../../config/routes.dart';
+import '../../../config/constants.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   final int currentIndex;
@@ -20,10 +21,12 @@ class CustomBottomNavigation extends StatelessWidget {
             height: 80,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).bottomNavigationBarTheme.backgroundColor, // Thay Colors.white
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.black.withOpacity(0.3) // Dark mode shadow
+                        : Colors.black.withOpacity(0.1), // Light mode shadow
                     blurRadius: 10,
                     offset: const Offset(0, -2),
                   ),
@@ -34,6 +37,7 @@ class CustomBottomNavigation extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _buildNavItem(
+                    context: context,
                     icon: Icons.home_outlined,
                     label: 'Home',
                     isActive: currentIndex == 0,
@@ -50,6 +54,7 @@ class CustomBottomNavigation extends StatelessWidget {
                   const SizedBox(width: 56),
 
                   _buildNavItem(
+                    context: context,
                     icon: Icons.history,
                     label: 'History',
                     isActive: currentIndex == 2,
@@ -78,11 +83,11 @@ class CustomBottomNavigation extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF4CAF50),
+                  color: AppColors.primary, // Sử dụng AppColors.primary
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF4CAF50).withOpacity(0.3),
+                      color: AppColors.primary.withOpacity(0.3),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -102,6 +107,7 @@ class CustomBottomNavigation extends StatelessWidget {
   }
 
   Widget _buildNavItem({
+    required BuildContext context,
     required IconData icon,
     required String label,
     required bool isActive,
@@ -116,7 +122,9 @@ class CustomBottomNavigation extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: isActive ? const Color(0xFF4CAF50) : Colors.grey[600],
+              color: isActive 
+                  ? AppColors.primary 
+                  : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor, // Theme color
               size: 28,
             ),
             const SizedBox(height: 4),
@@ -124,7 +132,9 @@ class CustomBottomNavigation extends StatelessWidget {
               label,
               style: TextStyle(
                 fontSize: 14,
-                color: isActive ? const Color(0xFF4CAF50) : Colors.grey[600],
+                color: isActive 
+                    ? AppColors.primary 
+                    : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor, // Theme color
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
               ),
             ),

@@ -1,6 +1,7 @@
 // lib/screens/settings/widgets/rating_dialog.dart
 import 'package:design_app/screens/settings/widgets/thank_you_dialog.dart';
 import 'package:flutter/material.dart';
+import '../../../config/constants.dart';
 
 class RatingDialog extends StatefulWidget {
   const RatingDialog({super.key});
@@ -19,7 +20,7 @@ class _RatingDialogState extends State<RatingDialog> {
       child: Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).dialogTheme.backgroundColor, // Thay Colors.white
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -33,7 +34,7 @@ class _RatingDialogState extends State<RatingDialog> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
                 ),
               ),
             ),
@@ -42,12 +43,15 @@ class _RatingDialogState extends State<RatingDialog> {
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 'Let us know your experience 5 stars is the best on Google Play!',
-                style: TextStyle(fontSize: 14, color: Colors.grey, height: 1.4),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                  height: 1.4,
+                ),
               ),
             ),
             const SizedBox(height: 24),
             Center(
-              // Chỉ sao mới center
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(5, (index) {
@@ -62,10 +66,11 @@ class _RatingDialogState extends State<RatingDialog> {
                       child: Icon(
                         Icons.star,
                         size: 40,
-                        color:
-                            index < selectedRating
-                                ? const Color(0xFFFFD700)
-                                : Colors.grey.withOpacity(0.3),
+                        color: index < selectedRating
+                            ? const Color(0xFFFFD700)
+                            : Theme.of(context).brightness == Brightness.dark
+                                ? Colors.grey.withOpacity(0.5) // Dark mode unselected star
+                                : Colors.grey.withOpacity(0.3), // Light mode unselected star
                       ),
                     ),
                   );
@@ -83,13 +88,17 @@ class _RatingDialogState extends State<RatingDialog> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       ),
-                      side: BorderSide(color: Colors.grey.withOpacity(0.3)),
+                      side: BorderSide(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.grey.withOpacity(0.5) // Dark mode border
+                            : Colors.grey.withOpacity(0.3), // Light mode border
+                      ),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Cancel',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.grey,
+                        color: Theme.of(context).textTheme.bodyMedium?.color, // Theme text color
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -98,15 +107,14 @@ class _RatingDialogState extends State<RatingDialog> {
                 const SizedBox(width: 16),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed:
-                        selectedRating > 0
-                            ? () {
-                              Navigator.of(context).pop();
-                              _showThankYouDialog(context);
-                            }
-                            : null,
+                    onPressed: selectedRating > 0
+                        ? () {
+                            Navigator.of(context).pop();
+                            _showThankYouDialog(context);
+                          }
+                        : null,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF4CAF50),
+                      backgroundColor: AppColors.primary,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),

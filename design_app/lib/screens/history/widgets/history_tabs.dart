@@ -1,5 +1,6 @@
 // lib/screens/history/widgets/history_tabs.dart
 import 'package:flutter/material.dart';
+import '../../../config/constants.dart';
 
 class HistoryTabs extends StatelessWidget {
   final int selectedIndex;
@@ -16,7 +17,9 @@ class HistoryTabs extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.grey[800] // Dark mode tab background
+            : Colors.grey[200], // Light mode tab background
         borderRadius: BorderRadius.circular(25),
       ),
       child: Row(
@@ -27,10 +30,9 @@ class HistoryTabs extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 0
-                          ? const Color(0xFF4CAF50)
-                          : Colors.transparent,
+                  color: selectedIndex == 0
+                      ? AppColors.primary
+                      : Colors.transparent,
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Center(
@@ -39,8 +41,9 @@ class HistoryTabs extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color:
-                          selectedIndex == 0 ? Colors.white : Colors.grey[600],
+                      color: selectedIndex == 0
+                          ? Colors.white
+                          : Theme.of(context).textTheme.bodyMedium?.color, // Theme color
                     ),
                   ),
                 ),
@@ -53,10 +56,9 @@ class HistoryTabs extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 decoration: BoxDecoration(
-                  color:
-                      selectedIndex == 1
-                          ? const Color(0xFF4CAF50)
-                          : Colors.transparent,
+                  color: selectedIndex == 1
+                      ? AppColors.primary
+                      : Colors.transparent,
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Center(
@@ -65,8 +67,9 @@ class HistoryTabs extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color:
-                          selectedIndex == 1 ? Colors.white : Colors.grey[600],
+                      color: selectedIndex == 1
+                          ? Colors.white
+                          : Theme.of(context).textTheme.bodyMedium?.color, // Theme color
                     ),
                   ),
                 ),

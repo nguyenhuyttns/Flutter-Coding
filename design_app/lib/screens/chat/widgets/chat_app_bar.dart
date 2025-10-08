@@ -1,6 +1,7 @@
 // lib/screens/chat/widgets/chat_app_bar.dart
 import 'package:flutter/material.dart';
 import '../../../widgets/common/feedback_bottom_sheet.dart';
+import '../../../config/constants.dart';
 
 class ChatAppBar extends StatelessWidget {
   final String title;
@@ -31,88 +32,87 @@ class ChatAppBar extends StatelessWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder:
-          (context) => Dialog(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+      builder: (context) => Dialog(
+        backgroundColor: Theme.of(context).dialogTheme.backgroundColor, // Thay Colors.white
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Are you sure you want to delete this chat history?',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+                  height: 1.5,
+                ),
+              ),
+
+              const SizedBox(height: 32),
+
+              Row(
                 children: [
-                  const Text(
-                    'Are you sure you want to delete this chat history?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black87,
-                      height: 1.5,
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Theme.of(context).dialogTheme.backgroundColor, // Theme background
+                        side: const BorderSide(
+                          color: AppColors.primary,
+                          width: 1,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                   ),
 
-                  const SizedBox(height: 32),
+                  const SizedBox(width: 12),
 
-                  Row(
-                    children: [
-                      Expanded(
-                        child: OutlinedButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            side: const BorderSide(
-                              color: Color(0xFF4CAF50),
-                              width: 1,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                          ),
-                          child: const Text(
-                            'Cancel',
-                            style: TextStyle(
-                              color: Color(0xFF4CAF50),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        onDeletePressed?.call();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        'Delete',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-
-                      const SizedBox(width: 12),
-
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            onDeletePressed?.call();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            elevation: 0,
-                          ),
-                          child: const Text(
-                            'Delete',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
-            ),
+            ],
           ),
+        ),
+      ),
     );
   }
 
@@ -121,10 +121,12 @@ class ChatAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).appBarTheme.backgroundColor, // Thay Colors.white
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black.withOpacity(0.2) // Dark mode shadow
+                : Colors.black.withOpacity(0.05), // Light mode shadow
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -134,7 +136,10 @@ class ChatAppBar extends StatelessWidget {
         children: [
           IconButton(
             onPressed: onBackPressed,
-            icon: const Icon(Icons.arrow_back, color: Colors.black87),
+            icon: Icon(
+              Icons.arrow_back,
+              color: Theme.of(context).appBarTheme.foregroundColor, // Thay Colors.black87
+            ),
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(),
           ),
@@ -143,22 +148,23 @@ class ChatAppBar extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
               ),
             ),
           ),
 
           IconButton(
-            onPressed:
-                showDeleteButton
-                    ? () => _showDeleteConfirmation(context)
-                    : () => _showFeedbackBottomSheet(context),
+            onPressed: showDeleteButton
+                ? () => _showDeleteConfirmation(context)
+                : () => _showFeedbackBottomSheet(context),
             icon: Icon(
               showDeleteButton ? Icons.delete_outline : Icons.inbox,
-              color: showDeleteButton ? Colors.red : Colors.black54,
+              color: showDeleteButton 
+                  ? Colors.red 
+                  : Theme.of(context).iconTheme.color, // Thay Colors.black54
             ),
           ),
         ],

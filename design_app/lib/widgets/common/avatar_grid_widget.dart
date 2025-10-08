@@ -37,19 +37,22 @@ class AvatarGridWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: isSelected ? AppColors.primary : Colors.grey[300]!,
+                    color: isSelected 
+                        ? AppColors.primary 
+                        : Theme.of(context).brightness == Brightness.dark
+                            ? Colors.grey[600]! // Dark mode border
+                            : Colors.grey[300]!, // Light mode border
                     width: isSelected ? 3 : 1,
                   ),
-                  boxShadow:
-                      isSelected
-                          ? [
-                            BoxShadow(
-                              color: AppColors.primary.withOpacity(0.3),
-                              blurRadius: 8,
-                              offset: const Offset(0, 2),
-                            ),
-                          ]
-                          : null,
+                  boxShadow: isSelected
+                      ? [
+                          BoxShadow(
+                            color: AppColors.primary.withOpacity(0.3),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          ),
+                        ]
+                      : null,
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(11),
@@ -58,11 +61,13 @@ class AvatarGridWidget extends StatelessWidget {
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
-                        color: Colors.grey[300],
-                        child: const Icon(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.grey[700] // Dark mode placeholder
+                            : Colors.grey[300], // Light mode placeholder
+                        child: Icon(
                           Icons.person,
                           size: 32,
-                          color: Colors.grey,
+                          color: Theme.of(context).iconTheme.color?.withOpacity(0.5),
                         ),
                       );
                     },

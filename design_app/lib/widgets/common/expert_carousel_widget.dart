@@ -1,6 +1,7 @@
 // lib/widgets/common/expert_carousel_widget.dart
 import 'package:flutter/material.dart';
 import '../../models/expert.dart';
+import '../../config/constants.dart';
 import 'avatar_frame_widget.dart';
 
 class ExpertCarouselWidget extends StatelessWidget {
@@ -32,7 +33,11 @@ class ExpertCarouselWidget extends StatelessWidget {
     if (experts.isEmpty) {
       return SizedBox(
         height: frameHeight + 40,
-        child: const Center(child: CircularProgressIndicator()),
+        child: Center(
+          child: CircularProgressIndicator(
+            color: AppColors.primary,
+          ),
+        ),
       );
     }
 
@@ -49,10 +54,9 @@ class ExpertCarouselWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Center(
                     child: GestureDetector(
-                      onTap:
-                          onExpertTap != null
-                              ? () => onExpertTap!(experts[index])
-                              : null,
+                      onTap: onExpertTap != null
+                          ? () => onExpertTap!(experts[index])
+                          : null,
                       child: AvatarFrameWidget(
                         imagePath: experts[index].imagePath,
                         displayName: experts[index].name,
@@ -76,7 +80,9 @@ class ExpertCarouselWidget extends StatelessWidget {
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.black.withOpacity(0.7) // Dark mode navigation button
+                              : Colors.black.withOpacity(0.5), // Light mode navigation button
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
@@ -101,7 +107,9 @@ class ExpertCarouselWidget extends StatelessWidget {
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.black.withOpacity(0.7) // Dark mode navigation button
+                              : Colors.black.withOpacity(0.5), // Light mode navigation button
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
@@ -128,10 +136,11 @@ class ExpertCarouselWidget extends StatelessWidget {
               width: currentIndex == index ? 24 : 8,
               height: 8,
               decoration: BoxDecoration(
-                color:
-                    currentIndex == index
-                        ? const Color(0xFF4CAF50)
-                        : Colors.grey[300],
+                color: currentIndex == index
+                    ? AppColors.primary
+                    : Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[600] // Dark mode indicator
+                        : Colors.grey[300], // Light mode indicator
                 borderRadius: BorderRadius.circular(4),
               ),
             ),

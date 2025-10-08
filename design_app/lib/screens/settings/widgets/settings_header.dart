@@ -13,9 +13,9 @@ class SettingsHeader extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_ios,
-              color: Colors.black87,
+              color: Theme.of(context).iconTheme.color, // Thay Colors.black87
               size: 20,
             ),
           ),
@@ -26,7 +26,7 @@ class SettingsHeader extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
                 ),
               ),
             ),

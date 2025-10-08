@@ -13,9 +13,9 @@ class PermissionHeader extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_ios,
-              color: Colors.black87,
+              color: Theme.of(context).iconTheme.color, // Thay Colors.black87
               size: 20,
             ),
           ),

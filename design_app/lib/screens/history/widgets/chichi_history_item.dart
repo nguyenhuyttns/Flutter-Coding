@@ -1,5 +1,6 @@
 // lib/screens/history/widgets/chichi_history_item.dart
 import 'package:flutter/material.dart';
+import '../../../config/constants.dart';
 
 class ChiChiHistoryItem extends StatelessWidget {
   final bool hasHistory;
@@ -16,17 +17,21 @@ class ChiChiHistoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!hasHistory) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.chat_bubble_outline, size: 64, color: Colors.grey),
-            SizedBox(height: 16),
+            Icon(
+              Icons.chat_bubble_outline,
+              size: 64,
+              color: Theme.of(context).iconTheme.color?.withOpacity(0.5), // Thay Colors.grey
+            ),
+            const SizedBox(height: 16),
             Text(
               'No chat with ChiChi yet',
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.grey,
+                color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -41,7 +46,7 @@ class ChiChiHistoryItem extends StatelessWidget {
         onTap: onTap,
         leading: const CircleAvatar(
           radius: 24,
-          backgroundColor: Color(0xFF4CAF50),
+          backgroundColor: AppColors.primary,
           child: Text(
             'AI',
             style: TextStyle(
@@ -51,17 +56,21 @@ class ChiChiHistoryItem extends StatelessWidget {
             ),
           ),
         ),
-        title: const Text(
+        title: Text(
           'ChiChi',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: Colors.black87,
+            color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
           ),
         ),
-        trailing: const Icon(Icons.chevron_right, color: Colors.grey, size: 24),
+        trailing: Icon(
+          Icons.chevron_right,
+          color: Theme.of(context).iconTheme.color, // Thay Colors.grey
+          size: 24,
+        ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        tileColor: Colors.white,
+        tileColor: Theme.of(context).cardColor, // Thay Colors.white
       ),
     );
   }

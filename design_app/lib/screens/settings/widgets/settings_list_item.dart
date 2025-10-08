@@ -34,26 +34,32 @@ class SettingsListItem extends StatelessWidget {
                 width: 32,
                 height: 32,
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.1),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey.withOpacity(0.2) // Dark mode icon background
+                      : Colors.grey.withOpacity(0.1), // Light mode icon background
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(item.icon, size: 18, color: Colors.black87),
+                child: Icon(
+                  item.icon,
+                  size: 18,
+                  color: Theme.of(context).iconTheme.color, // Thay Colors.black87
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: Text(
                   item.title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    color: Colors.black87,
+                    color: Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
                   ),
                 ),
               ),
               Icon(
                 Icons.arrow_forward_ios,
                 size: 16,
-                color: Colors.grey.withOpacity(0.6),
+                color: Theme.of(context).iconTheme.color?.withOpacity(0.6), // Theme icon color
               ),
             ],
           ),

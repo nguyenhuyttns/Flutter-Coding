@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../../../models/message.dart';
 import '../../../widgets/common/feedback_bottom_sheet.dart';
+import '../../../config/constants.dart';
 
 class MessageBubble extends StatelessWidget {
   final Message message;
@@ -37,14 +38,13 @@ class MessageBubble extends StatelessWidget {
         right: isUser ? 0 : 48,
       ),
       child: Row(
-        mainAxisAlignment:
-            isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           if (!isUser) ...[
             CircleAvatar(
               radius: 16,
-              backgroundColor: const Color(0xFF4CAF50),
+              backgroundColor: AppColors.primary,
               child: const Text(
                 'AI',
                 style: TextStyle(
@@ -61,7 +61,9 @@ class MessageBubble extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: isUser ? const Color(0xFF4CAF50) : Colors.white,
+                color: isUser 
+                    ? AppColors.primary 
+                    : Theme.of(context).cardColor, // Thay Colors.white
                 borderRadius: BorderRadius.only(
                   topLeft: const Radius.circular(18),
                   topRight: const Radius.circular(18),
@@ -70,88 +72,97 @@ class MessageBubble extends StatelessWidget {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.black.withOpacity(0.3) // Dark mode shadow
+                        : Colors.black.withOpacity(0.05), // Light mode shadow
                     blurRadius: 5,
                     offset: const Offset(0, 2),
                   ),
                 ],
               ),
-              child:
-                  message.isLoading
-                      ? Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.pause, color: Colors.grey, size: 16),
-                          const SizedBox(width: 8),
-                          Text(
+              child: message.isLoading
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.pause,
+                          color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                          size: 16,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          message.content,
+                          style: TextStyle(
+                            color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Stack(
+                      children: [
+                        Padding(
+                          padding: !isUser
+                              ? const EdgeInsets.only(bottom: 24)
+                              : EdgeInsets.zero,
+                          child: Text(
                             message.content,
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 14,
+                            style: TextStyle(
+                              color: isUser 
+                                  ? Colors.white 
+                                  : Theme.of(context).textTheme.bodyLarge?.color, // Thay Colors.black87
+                              fontSize: 16,
                             ),
                           ),
-                        ],
-                      )
-                      : Stack(
-                        children: [
-                          Padding(
-                            padding:
-                                !isUser
-                                    ? const EdgeInsets.only(bottom: 24)
-                                    : EdgeInsets.zero,
-                            child: Text(
-                              message.content,
-                              style: TextStyle(
-                                color: isUser ? Colors.white : Colors.black87,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
+                        ),
 
-                          if (!isUser)
-                            Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  GestureDetector(
-                                    onTap:
-                                        () => _showFeedbackBottomSheet(context),
-                                    child: Container(
-                                      padding: const EdgeInsets.all(3),
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[200],
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(
-                                        Icons.error_outline,
-                                        size: 12,
-                                        color: Colors.grey,
-                                      ),
+                        if (!isUser)
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                GestureDetector(
+                                  onTap: () => _showFeedbackBottomSheet(context),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).brightness == Brightness.dark
+                                          ? Colors.grey[700] // Dark mode button background
+                                          : Colors.grey[200], // Light mode button background
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Icon(
+                                      Icons.error_outline,
+                                      size: 12,
+                                      color: Theme.of(context).iconTheme.color, // Theme icon color
                                     ),
                                   ),
-                                  const SizedBox(width: 6),
-                                  GestureDetector(
-                                    onTap: _onFlagTap,
-                                    child: Container(
-                                      padding: const EdgeInsets.all(3),
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[200],
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(
-                                        Icons.flag_outlined,
-                                        size: 12,
-                                        color: Colors.grey,
-                                      ),
+                                ),
+                                const SizedBox(width: 6),
+                                GestureDetector(
+                                  onTap: _onFlagTap,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).brightness == Brightness.dark
+                                          ? Colors.grey[700] // Dark mode button background
+                                          : Colors.grey[200], // Light mode button background
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Icon(
+                                      Icons.flag_outlined,
+                                      size: 12,
+                                      color: Theme.of(context).iconTheme.color, // Theme icon color
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                        ],
-                      ),
+                          ),
+                      ],
+                    ),
             ),
           ),
 
@@ -159,8 +170,14 @@ class MessageBubble extends StatelessWidget {
             const SizedBox(width: 8),
             CircleAvatar(
               radius: 16,
-              backgroundColor: Colors.grey[300],
-              child: const Icon(Icons.person, size: 16, color: Colors.grey),
+              backgroundColor: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.grey[600] // Dark mode avatar background
+                  : Colors.grey[300], // Light mode avatar background
+              child: Icon(
+                Icons.person,
+                size: 16,
+                color: Theme.of(context).iconTheme.color, // Theme icon color
+              ),
             ),
           ],
         ],

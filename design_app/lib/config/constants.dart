@@ -11,21 +11,38 @@ class AppColors {
   // Primary Colors
   static const Color primary = Color(0xFF4CAF50);
   static const Color primaryDark = Color(0xFF388E3C);
+  static const Color primaryLight = Color(0xFF81C784);
 
-  // Background Colors
+  // Background Colors - Light Theme
   static const Color background = Color(0xFFFAFAFA);
-  static const Color backgroundDark = Color(0xFF121212);
   static const Color surface = Colors.white;
+  
+  // Background Colors - Dark Theme
+  static const Color backgroundDark = Color(0xFF121212);
   static const Color surfaceDark = Color(0xFF1E1E1E);
+  static const Color surfaceVariantDark = Color(0xFF2D2D2D);
 
-  // Text Colors
+  // Text Colors - Light Theme
   static const Color textPrimary = Color(0xFF212121);
   static const Color textSecondary = Color(0xFF757575);
+  
+  // Text Colors - Dark Theme
+  static const Color textPrimaryDark = Colors.white;
   static const Color textSecondaryDark = Color(0xFFBDBDBD);
+
+  // Border Colors
+  static const Color borderLight = Color(0xFFE0E0E0);
+  static const Color borderDark = Color(0xFF404040);
 
   // Other Colors
   static const Color error = Color(0xFFB00020);
   static const Color success = Color(0xFF4CAF50);
+  static const Color warning = Color(0xFFFF9800);
+  static const Color info = Color(0xFF2196F3);
+
+  // Shadow Colors
+  static const Color shadowLight = Color(0x1A000000);
+  static const Color shadowDark = Color(0x40000000);
 }
 
 class AppImages {

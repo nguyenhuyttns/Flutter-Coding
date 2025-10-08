@@ -1,3 +1,4 @@
+// lib/screens/language/language_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'language_viewmodel.dart';
@@ -22,18 +23,25 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor, // Thay Colors.grey[50]
       appBar: AppBar(
-        title: const Text('Language'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        title: Text(
+          'Language',
+          style: Theme.of(context).textTheme.headlineMedium, // Sử dụng theme text style
+        ),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor, // Thay Colors.white
+        foregroundColor: Theme.of(context).appBarTheme.foregroundColor, // Thay Colors.black
         elevation: 0,
+        iconTheme: Theme.of(context).appBarTheme.iconTheme, // Sử dụng theme icon
         actions: [
           Consumer<LanguageViewModel>(
             builder: (context, viewModel, child) {
               return IconButton(
                 onPressed: () => viewModel.saveAndGoToIntro(context),
-                icon: const Icon(Icons.check),
+                icon: Icon(
+                  Icons.check,
+                  color: Theme.of(context).iconTheme.color, // Sử dụng theme icon color
+                ),
               );
             },
           ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'routes.dart';
 import 'themes.dart';
+import '../services/theme_service.dart'; // Thêm import
 import '../screens/splash/splash_viewmodel.dart';
 import '../screens/language/language_viewmodel.dart';
 import '../screens/intro/intro_viewmodel.dart';
@@ -14,7 +15,6 @@ import '../screens/chat/chat_viewmodel.dart';
 import '../screens/settings/settings_viewmodel.dart';
 import '../screens/permission/permission_viewmodel.dart';
 
-
 class AppConfig extends StatelessWidget {
   const AppConfig({super.key});
 
@@ -22,6 +22,7 @@ class AppConfig extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => ThemeService()), // Thêm ThemeService đầu tiên
         ChangeNotifierProvider(create: (_) => SplashViewModel()),
         ChangeNotifierProvider(create: (_) => LanguageViewModel()),
         ChangeNotifierProvider(create: (_) => IntroViewModel()),
@@ -33,14 +34,18 @@ class AppConfig extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SettingsViewModel()),
         ChangeNotifierProvider(create: (_) => PermissionViewModel()),
       ],
-      child: MaterialApp(
-        title: 'ChiChi - AI Chat Characters',
-        theme: AppThemes.lightTheme,
-        darkTheme: AppThemes.darkTheme,
-        themeMode: ThemeMode.system,
-        initialRoute: AppRoutes.splash,
-        onGenerateRoute: AppRoutes.generateRoute,
-        debugShowCheckedModeBanner: false,
+      child: Consumer<ThemeService>( // Wrap MaterialApp với Consumer
+        builder: (context, themeService, child) {
+          return MaterialApp(
+            title: 'ChiChi - AI Chat Characters',
+            theme: AppThemes.lightTheme,
+            darkTheme: AppThemes.darkTheme,
+            themeMode: themeService.themeMode, // Sử dụng themeMode từ service
+            initialRoute: AppRoutes.splash,
+            onGenerateRoute: AppRoutes.generateRoute,
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }

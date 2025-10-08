@@ -1,5 +1,6 @@
 // lib/screens/settings/widgets/thank_you_dialog.dart
 import 'package:flutter/material.dart';
+import '../../../config/constants.dart';
 
 class ThankYouDialog extends StatelessWidget {
   const ThankYouDialog({super.key});
@@ -11,41 +12,44 @@ class ThankYouDialog extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).dialogTheme.backgroundColor, // Thay Colors.white
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start, // Căn trái
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8.0), // Padding tránh sát lề
+              padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 'Thank You!',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: Theme.of(context).textTheme.headlineMedium?.color, // Thay Colors.black87
                 ),
               ),
             ),
             const SizedBox(height: 16),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0), // Padding tránh sát lề
+              padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 'Thank you for taking the time to rate us. I\'m really appreciate that.',
-                style: TextStyle(fontSize: 14, color: Colors.grey, height: 1.4),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Theme.of(context).textTheme.bodyMedium?.color, // Thay Colors.grey
+                  height: 1.4,
+                ),
               ),
             ),
             const SizedBox(height: 32),
-            // Nút Got it nhỏ hơn, không full width
             Center(
               child: SizedBox(
-                width: 120, // Chiều rộng cố định thay vì full width
+                width: 120,
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF4CAF50), // Green color
+                    backgroundColor: AppColors.primary,
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
