@@ -1,11 +1,9 @@
 // lib/screens/home/home_viewmodel.dart
 import 'package:flutter/material.dart';
 import '../../models/expert.dart';
-import '../../models/avatar.dart';
 import '../../services/expert_service.dart';
 import '../../services/storage_service.dart';
 import '../../config/routes.dart';
-import '../../config/constants.dart';
 
 class HomeViewModel extends ChangeNotifier {
   final StorageService _storageService = StorageService();

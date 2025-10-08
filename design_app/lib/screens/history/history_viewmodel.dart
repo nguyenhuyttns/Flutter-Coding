@@ -2,9 +2,7 @@
 import 'package:design_app/screens/chat/chat_screen.dart';
 import 'package:flutter/material.dart';
 import '../../models/chat_history.dart';
-import '../../models/expert.dart';
 import '../../services/expert_service.dart';
-import '../../config/routes.dart';
 
 class HistoryViewModel extends ChangeNotifier {
   int _selectedTabIndex = 0;
