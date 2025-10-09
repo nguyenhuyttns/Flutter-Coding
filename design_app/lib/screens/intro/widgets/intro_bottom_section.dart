@@ -1,5 +1,6 @@
 // lib/screens/intro/widgets/intro_bottom_section.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../config/constants.dart';
 
 class IntroBottomSection extends StatelessWidget {
@@ -49,10 +50,12 @@ class IntroBottomSection extends StatelessWidget {
             onTap: isLastSlide ? onStart : onNext,
             child: Text(
               isLastSlide ? 'Start' : 'Next',
-              style: TextStyle(
+              style: GoogleFonts.roboto(
                 fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Theme.of(context).textTheme.bodyLarge?.color, 
+                fontWeight: FontWeight.w700,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Theme.of(context).textTheme.bodyLarge?.color
+                    : Colors.black87,
               ),
             ),
           ),

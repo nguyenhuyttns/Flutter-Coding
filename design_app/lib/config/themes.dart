@@ -32,8 +32,8 @@ class AppThemes {
         iconTheme: IconThemeData(color: AppColors.textPrimary),
       ),
 
-      // Text Theme
-      textTheme: GoogleFonts.poppinsTextTheme(
+      // Text Theme - INTER FONT
+      textTheme: GoogleFonts.interTextTheme(
         const TextTheme(
           headlineLarge: TextStyle(
             fontSize: 24,
@@ -128,8 +128,8 @@ class AppThemes {
         iconTheme: IconThemeData(color: AppColors.textPrimaryDark),
       ),
 
-      // Text Theme
-      textTheme: GoogleFonts.poppinsTextTheme(
+      // Text Theme - INTER FONT
+      textTheme: GoogleFonts.interTextTheme(
         const TextTheme(
           headlineLarge: TextStyle(
             fontSize: 24,

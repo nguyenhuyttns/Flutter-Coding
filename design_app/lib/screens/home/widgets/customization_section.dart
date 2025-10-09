@@ -1,6 +1,6 @@
 // lib/screens/home/widgets/customization_section.dart
 import 'package:flutter/material.dart';
-import '../../../config/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomizationSection extends StatelessWidget {
   final String assistantName;
@@ -21,46 +21,51 @@ class CustomizationSection extends StatelessWidget {
       children: [
         Text(
           'Customize your Assistant',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: Theme.of(context).textTheme.headlineMedium?.color, 
+          style: GoogleFonts.roboto(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: Theme.of(context).textTheme.headlineMedium?.color,
           ),
         ),
 
         const SizedBox(height: 16),
 
-        SizedBox(
-          width: double.infinity,
-          height: 100,
-          child: ElevatedButton(
-            onPressed: onCustomizeTap,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primary, 
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
+        GestureDetector(
+          onTap: onCustomizeTap,
+          child: Container(
+            width: double.infinity,
+            height: 100,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment.centerLeft,  
+                end: Alignment.centerRight,
+                colors: [
+                  Color(0xFF36B466), 
+                  Color(0xFF1EB68B), 
+                ],
               ),
-              elevation: 0,
+              borderRadius: BorderRadius.circular(15),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(Icons.edit, color: Colors.white, size: 30),
+                Image.asset(
+                  'assets/images/Group 17.png',
+                  width: 50,
+                  height: 50,
+                  color: Colors.white,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.edit, color: Colors.white, size: 30);
+                  },
                 ),
                 const SizedBox(width: 12),
-                const Text(
+                Text(
                   'CUSTOMIZATION',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                  style: GoogleFonts.roboto(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
                     letterSpacing: 0.5,
+                    color: Colors.white,
                   ),
                 ),
               ],

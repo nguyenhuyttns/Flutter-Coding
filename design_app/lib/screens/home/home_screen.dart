@@ -1,5 +1,6 @@
 // lib/screens/home/home_screen.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_viewmodel.dart';
 import 'widgets/home_header.dart';
@@ -26,7 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Colors.black 
+          : Color(0xFFF2F9FF), 
       body: SafeArea(
         child: Consumer<HomeViewModel>(
           builder: (context, viewModel, child) {
@@ -44,10 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Text(
                           'Chat with Expert',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Theme.of(context).textTheme.headlineMedium?.color, 
+                          style: GoogleFonts.roboto(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).textTheme.headlineMedium?.color,
                           ),
                         ),
 

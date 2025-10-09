@@ -1,5 +1,6 @@
 // lib/screens/intro/widgets/intro_slide_widget.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../models/intro_slide.dart';
 
 class IntroSlideWidget extends StatelessWidget {
@@ -19,15 +20,6 @@ class IntroSlideWidget extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black.withOpacity(0.3) 
-                        : Colors.black.withOpacity(0.1), 
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(0),
@@ -62,10 +54,10 @@ class IntroSlideWidget extends StatelessWidget {
                 Text(
                   slide.title,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).textTheme.headlineLarge?.color, 
+                  style: GoogleFonts.roboto(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).textTheme.headlineLarge?.color,
                   ),
                 ),
                 const SizedBox(height: 12),

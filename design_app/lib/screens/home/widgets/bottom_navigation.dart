@@ -10,35 +10,28 @@ class CustomBottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
+    return Container(
+      height: 80, // Giảm height tổng từ 100 xuống 80
+      decoration: BoxDecoration(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black 
+            : Colors.grey[100], 
+      ),
       child: Stack(
         children: [
+          // Bottom navigation items
           Positioned(
             bottom: 0,
             left: 0,
             right: 0,
             height: 80,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).bottomNavigationBarTheme.backgroundColor, 
-                boxShadow: [
-                  BoxShadow(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black.withOpacity(0.3) 
-                        : Colors.black.withOpacity(0.1), 
-                    blurRadius: 10,
-                    offset: const Offset(0, -2),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _buildNavItem(
+            child: Row(
+              children: [
+                // Home button
+                Expanded(
+                  child: _buildNavItem(
                     context: context,
-                    icon: Icons.home_outlined,
+                    icon: Icons.home_outlined, // Tạm dùng icon mặc định
                     label: 'Home',
                     isActive: currentIndex == 0,
                     onTap: () {
@@ -50,12 +43,16 @@ class CustomBottomNavigation extends StatelessWidget {
                       }
                     },
                   ),
-
-                  const SizedBox(width: 56),
-
-                  _buildNavItem(
+                ),
+                
+                // Space for center button
+                const SizedBox(width: 80),
+                
+                // History button
+                Expanded(
+                  child: _buildNavItem(
                     context: context,
-                    icon: Icons.history,
+                    icon: Icons.history, // Tạm dùng icon mặc định
                     label: 'History',
                     isActive: currentIndex == 2,
                     onTap: () {
@@ -67,11 +64,12 @@ class CustomBottomNavigation extends StatelessWidget {
                       }
                     },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
 
+          // Center floating button
           Positioned(
             top: 0,
             left: MediaQuery.of(context).size.width / 2 - 28,
@@ -83,20 +81,13 @@ class CustomBottomNavigation extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: AppColors.primary, 
+                  color: AppColors.primary,
                   shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primary.withOpacity(0.3),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
                 ),
                 child: const Icon(
                   Icons.chat_bubble_outline,
                   color: Colors.white,
-                  size: 28,
+                  size: 24,
                 ),
               ),
             ),
@@ -113,28 +104,33 @@ class CustomBottomNavigation extends StatelessWidget {
     required bool isActive,
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        height: 80,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               icon,
+              size: 20,
               color: isActive 
                   ? AppColors.primary 
-                  : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor, 
-              size: 28,
+                  : Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[400]
+                      : Colors.grey[600],
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 2),
             Text(
               label,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 10,
                 color: isActive 
                     ? AppColors.primary 
-                    : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor, 
+                    : Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[400]
+                        : Colors.grey[600],
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
               ),
             ),

@@ -50,13 +50,14 @@ class AppImages {
   static const String logo = '$_imagePath/logo.png';
 
   // Intro images
-  static const String intro1 = '$_imagePath/intro1.PNG';
-  static const String intro2 = '$_imagePath/intro2.PNG';
-  static const String intro3 = '$_imagePath/intro3.PNG';
-  static const String intro4 = '$_imagePath/intro4.PNG';
+  static const String intro1 = '$_imagePath/intro1.png';
+  static const String intro2 = '$_imagePath/intro2.png';
+  static const String intro3 = '$_imagePath/intro3.png';
+  static const String intro4 = '$_imagePath/intro4.png';
 
   // First setup images
-  static const String avatarFrame = '$_imagePath/avatakhung.PNG';
+  static const String avatarFrame = '$_imagePath/avatakhung.png';
+  static const String avatarName = '$_imagePath/avataname.png';
 
   // Avatar images
   static const String avatar1 = '$_imagePath/avata1.PNG';

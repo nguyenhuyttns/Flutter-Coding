@@ -70,7 +70,7 @@ class ExpertCarouselWidget extends StatelessWidget {
 
               if (currentIndex > 0)
                 Positioned(
-                  left: 16,
+                  left: 20,
                   top: 0,
                   bottom: 0,
                   child: Center(

@@ -1,5 +1,6 @@
 // lib/widgets/common/avatar_frame_widget.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../config/constants.dart';
 
 class AvatarFrameWidget extends StatelessWidget {
@@ -21,18 +22,7 @@ class AvatarFrameWidget extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.4) 
-                : Colors.black.withOpacity(0.1), 
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
       child: Stack(
         children: [
           ClipRRect(
@@ -50,9 +40,10 @@ class AvatarFrameWidget extends StatelessWidget {
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: Theme.of(context).brightness == Brightness.dark
-                          ? [const Color(0xFF2E3A2E), AppColors.primary] 
-                          : [const Color(0xFF2E3A2E), AppColors.primary], 
+                      colors:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? [const Color(0xFF2E3A2E), AppColors.primary]
+                              : [const Color(0xFF2E3A2E), AppColors.primary],
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -63,7 +54,7 @@ class AvatarFrameWidget extends StatelessWidget {
 
           if (imagePath != null)
             Positioned(
-              top: 20,
+              top: 5,
               left: 20,
               right: 20,
               bottom: 60,
@@ -74,13 +65,16 @@ class AvatarFrameWidget extends StatelessWidget {
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.grey[700] 
-                          : Colors.grey[300], 
+                      color:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Colors.grey[700]
+                              : Colors.grey[300],
                       child: Icon(
                         Icons.person,
                         size: 64,
-                        color: Theme.of(context).iconTheme.color?.withOpacity(0.5),
+                        color: Theme.of(
+                          context,
+                        ).iconTheme.color?.withOpacity(0.5),
                       ),
                     );
                   },
@@ -90,24 +84,20 @@ class AvatarFrameWidget extends StatelessWidget {
 
           if (displayName.isNotEmpty)
             Positioned(
-              bottom: 10,
+              bottom: 35,
               left: 0,
               right: 0,
               child: Center(
                 child: Text(
                   displayName,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.white, 
-                    fontSize: 14,
-                    fontWeight: FontWeight.w900,
-                    shadows: [
-                      Shadow(
-                        offset: Offset(0, 1),
-                        blurRadius: 2,
-                        color: Colors.black26,
-                      ),
-                    ],
+                  style: GoogleFonts.roboto(
+                    color:
+                        Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
