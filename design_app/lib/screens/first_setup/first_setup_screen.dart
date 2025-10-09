@@ -1,6 +1,7 @@
 // lib/screens/first_setup/first_setup_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'first_setup_viewmodel.dart';
 import '../../widgets/common/avatar_frame_widget.dart';
 import '../../widgets/common/avatar_grid_widget.dart';
@@ -18,7 +19,11 @@ class FirstSetupScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Customize your Assistant',
-          style: Theme.of(context).textTheme.headlineMedium, 
+          style: GoogleFonts.roboto(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Theme.of(context).textTheme.headlineMedium?.color,
+          ),
         ),
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor, 
         foregroundColor: Theme.of(context).appBarTheme.foregroundColor, 
@@ -55,15 +60,19 @@ class FirstSetupScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Name',
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
                                 fontSize: 16,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w700,
                                 color: Theme.of(context).textTheme.bodyLarge?.color, 
                               ),
                             ),
-                            const Text(
+                            Text(
                               ' *',
-                              style: TextStyle(fontSize: 16, color: Colors.red),
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.red,
+                              ),
                             ),
                           ],
                         ),
@@ -72,12 +81,16 @@ class FirstSetupScreen extends StatelessWidget {
 
                         TextField(
                           controller: viewModel.nameController,
-                          style: TextStyle(
+                          style: GoogleFonts.roboto(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
                             color: Theme.of(context).textTheme.bodyLarge?.color, 
                           ),
                           decoration: InputDecoration(
                             hintText: 'Your assistant name',
-                            hintStyle: TextStyle(
+                            hintStyle: GoogleFonts.roboto(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
                               color: Theme.of(context).textTheme.bodyMedium?.color, 
                             ),
                             filled: true,
@@ -102,15 +115,19 @@ class FirstSetupScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Choose Avatar',
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
                                 fontSize: 16,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w700,
                                 color: Theme.of(context).textTheme.bodyLarge?.color, 
                               ),
                             ),
-                            const Text(
+                            Text(
                               ' *',
-                              style: TextStyle(fontSize: 16, color: Colors.red),
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.red,
+                              ),
                             ),
                           ],
                         ),
@@ -152,11 +169,12 @@ class FirstSetupScreen extends StatelessWidget {
                                 Expanded(
                                   child: Text(
                                     viewModel.errorMessage,
-                                    style: TextStyle(
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
                                       color: Theme.of(context).brightness == Brightness.dark
                                           ? Colors.red[400] 
                                           : Colors.red[600], 
-                                      fontSize: 14,
                                     ),
                                   ),
                                 ),
@@ -174,12 +192,6 @@ class FirstSetupScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
                     color: Theme.of(context).scaffoldBackgroundColor, 
-                    border: Border(
-                      top: BorderSide(
-                        color: Theme.of(context).dividerColor, 
-                        width: 1,
-                      ),
-                    ),
                   ),
                   child: SizedBox(
                     width: double.infinity,
@@ -207,11 +219,11 @@ class FirstSetupScreen extends StatelessWidget {
                                 ),
                               ),
                             )
-                          : const Text(
+                          : Text(
                               'Next',
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
                                 fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                     ),

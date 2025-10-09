@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import '../../models/expert.dart';
 import '../../config/constants.dart';
-import 'avatar_frame_widget.dart';
+import 'expert_card_widget.dart';
 
 class ExpertCarouselWidget extends StatelessWidget {
   final List<Expert> experts;
@@ -57,7 +57,7 @@ class ExpertCarouselWidget extends StatelessWidget {
                       onTap: onExpertTap != null
                           ? () => onExpertTap!(experts[index])
                           : null,
-                      child: AvatarFrameWidget(
+                      child: ExpertCardWidget(
                         imagePath: experts[index].imagePath,
                         displayName: experts[index].name,
                         width: frameWidth,
@@ -77,7 +77,7 @@ class ExpertCarouselWidget extends StatelessWidget {
                     child: GestureDetector(
                       onTap: onPreviousTap,
                       child: Container(
-                        width: 40,
+                        width: 30,
                         height: 40,
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
@@ -104,7 +104,7 @@ class ExpertCarouselWidget extends StatelessWidget {
                     child: GestureDetector(
                       onTap: onNextTap,
                       child: Container(
-                        width: 40,
+                        width: 30,
                         height: 40,
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark

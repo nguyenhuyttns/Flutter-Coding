@@ -51,8 +51,8 @@ class CustomizationSection extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/images/Group 17.png',
-                  width: 50,
-                  height: 50,
+                  width: 80,
+                  height: 80,
                   color: Colors.white,
                   errorBuilder: (context, error, stackTrace) {
                     return const Icon(Icons.edit, color: Colors.white, size: 30);

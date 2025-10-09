@@ -83,4 +83,21 @@ class AppImages {
   static const String assistant8 = '$_imagePath/assistant8.PNG';
   static const String assistant9 = '$_imagePath/assistant9.PNG';
   static const String assistant10 = '$_imagePath/assistant10.PNG';
+
+  static const String expert1 = '$_imagePath/expert1.png';
+  static const String expert2 = '$_imagePath/expert2.png';
+  static const String expert3 = '$_imagePath/expert3.png';
+  static const String expert4 = '$_imagePath/expert4.png';
+  static const String expert5 = '$_imagePath/expert5.png';
+  static const String expert6 = '$_imagePath/expert6.png';
+  static const String expert7 = '$_imagePath/expert7.png';
+  static const String expert8 = '$_imagePath/expert8.png';
+  static const String expert9 = '$_imagePath/expert9.png';
+  static const String expert10 = '$_imagePath/expert10.png';
+
+  static const String iconhome = '$_imagePath/home.png';
+  static const String iconclock = '$_imagePath/clock.png';
+  static const String iconmessage = '$_imagePath/message.png';
+
+  
 }

@@ -1,5 +1,6 @@
 // lib/screens/first_setup_description/widgets/custom_text_field.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../config/constants.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -25,46 +26,47 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
+          style: GoogleFonts.roboto(
             fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Theme.of(context).textTheme.bodyLarge?.color, 
+            fontWeight: FontWeight.w700,
+            color: Theme.of(context).textTheme.bodyLarge?.color,
           ),
         ),
+
         const SizedBox(height: 8),
         TextField(
           controller: controller,
           maxLines: maxLines,
           onChanged: onChanged,
-          style: TextStyle(
-            color: Theme.of(context).textTheme.bodyLarge?.color, 
-          ),
+          style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: TextStyle(
-              color: Theme.of(context).textTheme.bodyMedium?.color, 
+              color: Theme.of(context).textTheme.bodyMedium?.color,
             ),
             filled: true,
-            fillColor: Theme.of(context).cardColor, 
+            fillColor: Theme.of(context).cardColor,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.grey[600]! 
-                    : Colors.grey[300]!, 
+                color:
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[600]!
+                        : Colors.grey[300]!,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.grey[600]! 
-                    : Colors.grey[300]!, 
+                color:
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[600]!
+                        : Colors.grey[300]!,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.primary, width: 2), 
+              borderSide: const BorderSide(color: AppColors.primary, width: 2),
             ),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,

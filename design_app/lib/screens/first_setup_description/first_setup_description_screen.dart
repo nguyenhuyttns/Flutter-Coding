@@ -172,12 +172,7 @@ class _FirstSetupDescriptionScreenState
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   color: Theme.of(context).scaffoldBackgroundColor, 
-                  border: Border(
-                    top: BorderSide(
-                      color: Theme.of(context).dividerColor, 
-                      width: 1,
-                    ),
-                  ),
+                  // Đã bỏ border ở đây
                 ),
                 child: SizedBox(
                   width: double.infinity,

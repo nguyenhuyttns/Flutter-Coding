@@ -1,5 +1,6 @@
 // lib/screens/first_setup_description/widgets/custom_dropdown.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomDropdown<T> extends StatelessWidget {
   final String label;
@@ -22,23 +23,25 @@ class CustomDropdown<T> extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
+          style: GoogleFonts.roboto(
             fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Theme.of(context).textTheme.bodyLarge?.color, 
+            fontWeight: FontWeight.w700,
+            color: Theme.of(context).textTheme.bodyLarge?.color,
           ),
         ),
+
         const SizedBox(height: 8),
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
-            color: Theme.of(context).cardColor, 
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.grey[600]! 
-                  : Colors.grey[300]!, 
+              color:
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[600]!
+                      : Colors.grey[300]!,
             ),
           ),
           child: DropdownButtonHideUnderline(
@@ -47,7 +50,7 @@ class CustomDropdown<T> extends StatelessWidget {
               hint: Text(
                 'Select $label',
                 style: TextStyle(
-                  color: Theme.of(context).textTheme.bodyMedium?.color, 
+                  color: Theme.of(context).textTheme.bodyMedium?.color,
                 ),
               ),
               isExpanded: true,
@@ -55,13 +58,13 @@ class CustomDropdown<T> extends StatelessWidget {
               onChanged: onChanged,
               icon: Icon(
                 Icons.keyboard_arrow_down,
-                color: Theme.of(context).iconTheme.color, 
+                color: Theme.of(context).iconTheme.color,
               ),
               style: TextStyle(
-                color: Theme.of(context).textTheme.bodyLarge?.color, 
+                color: Theme.of(context).textTheme.bodyLarge?.color,
                 fontSize: 16,
               ),
-              dropdownColor: Theme.of(context).cardColor, 
+              dropdownColor: Theme.of(context).cardColor,
             ),
           ),
         ),

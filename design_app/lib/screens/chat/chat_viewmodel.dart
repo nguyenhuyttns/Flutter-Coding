@@ -21,7 +21,6 @@ class ChatViewModel extends ChangeNotifier {
   void initializeChat({Expert? expert}) {
     if (expert != null) {
       _chatTitle = expert.name;
-      _chatSubtitle = expert.description;
     } else {
       _chatTitle = 'ChiChi';
       _chatSubtitle = 'AI Assistant';
