@@ -98,6 +98,8 @@ class AppImages {
   static const String iconhome = '$_imagePath/home.png';
   static const String iconclock = '$_imagePath/clock.png';
   static const String iconmessage = '$_imagePath/message.png';
+  static const String iconback = '$_imagePath/iconback.png';
+  static const String iconreset = '$_imagePath/iconreset.png';
 
   
 }

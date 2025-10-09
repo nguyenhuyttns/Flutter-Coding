@@ -84,7 +84,7 @@ class AvatarFrameWidget extends StatelessWidget {
 
           if (displayName.isNotEmpty)
             Positioned(
-              bottom: 35,
+              bottom: 30,
               left: 0,
               right: 0,
               child: Center(

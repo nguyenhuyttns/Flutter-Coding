@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'first_setup_viewmodel.dart';
 import '../../widgets/common/avatar_frame_widget.dart';
 import '../../widgets/common/avatar_grid_widget.dart';
+import '../../config/constants.dart';
 
 class FirstSetupScreen extends StatelessWidget {
   const FirstSetupScreen({super.key});
@@ -17,6 +18,14 @@ class FirstSetupScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: ImageIcon(
+            AssetImage(AppImages.iconback),
+            color: Theme.of(context).iconTheme.color,
+            size: 24,
+          ),
+        ),
         title: Text(
           'Customize your Assistant',
           style: GoogleFonts.roboto(
@@ -29,7 +38,6 @@ class FirstSetupScreen extends StatelessWidget {
         foregroundColor: Theme.of(context).appBarTheme.foregroundColor, 
         elevation: 0,
         centerTitle: true,
-        iconTheme: Theme.of(context).appBarTheme.iconTheme, 
       ),
       body: SafeArea(
         child: Consumer<FirstSetupViewModel>(
@@ -83,14 +91,14 @@ class FirstSetupScreen extends StatelessWidget {
                           controller: viewModel.nameController,
                           style: GoogleFonts.roboto(
                             fontSize: 16,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w400, 
                             color: Theme.of(context).textTheme.bodyLarge?.color, 
                           ),
                           decoration: InputDecoration(
                             hintText: 'Your assistant name',
                             hintStyle: GoogleFonts.roboto(
                               fontSize: 16,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w400, 
                               color: Theme.of(context).textTheme.bodyMedium?.color, 
                             ),
                             filled: true,
@@ -171,7 +179,7 @@ class FirstSetupScreen extends StatelessWidget {
                                     viewModel.errorMessage,
                                     style: GoogleFonts.roboto(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w700,
+                                      fontWeight: FontWeight.w400, 
                                       color: Theme.of(context).brightness == Brightness.dark
                                           ? Colors.red[400] 
                                           : Colors.red[600], 

@@ -9,6 +9,8 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final int maxLines;
   final ValueChanged<String>? onChanged;
+  final bool showHelpIcon;
+  final VoidCallback? onHelpTap;
 
   const CustomTextField({
     super.key,
@@ -17,6 +19,8 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.maxLines = 1,
     this.onChanged,
+    this.showHelpIcon = false,
+    this.onHelpTap,
   });
 
   @override
@@ -24,13 +28,30 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: GoogleFonts.roboto(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: Theme.of(context).textTheme.bodyLarge?.color,
-          ),
+        Row(
+          children: [
+            Text(
+              label,
+              style: GoogleFonts.roboto(
+                fontSize: 16,
+                fontWeight: FontWeight.w700, // Label đậm
+                color: Theme.of(context).textTheme.bodyLarge?.color,
+              ),
+            ),
+            if (showHelpIcon) ...[
+              const SizedBox(width: 8),
+              GestureDetector(
+                onTap: onHelpTap,
+                child: Icon(
+                  Icons.help_outline,
+                  size: 18,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[400]
+                      : Colors.grey[600],
+                ),
+              ),
+            ],
+          ],
         ),
 
         const SizedBox(height: 8),
@@ -38,10 +59,16 @@ class CustomTextField extends StatelessWidget {
           controller: controller,
           maxLines: maxLines,
           onChanged: onChanged,
-          style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color),
+          style: GoogleFonts.roboto(
+            fontSize: 16,
+            fontWeight: FontWeight.w400, // Text trong field chữ thường
+            color: Theme.of(context).textTheme.bodyLarge?.color,
+          ),
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: TextStyle(
+            hintStyle: GoogleFonts.roboto(
+              fontSize: 16,
+              fontWeight: FontWeight.w400, // Hint text chữ thường
               color: Theme.of(context).textTheme.bodyMedium?.color,
             ),
             filled: true,

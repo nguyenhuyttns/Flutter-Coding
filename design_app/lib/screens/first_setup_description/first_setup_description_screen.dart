@@ -2,9 +2,11 @@
 import 'package:design_app/models/language.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'first_setup_description_viewmodel.dart';
 import 'widgets/custom_dropdown.dart';
 import 'widgets/custom_text_field.dart';
+import '../../config/constants.dart';
 
 class FirstSetupDescriptionScreen extends StatefulWidget {
   const FirstSetupDescriptionScreen({super.key});
@@ -29,15 +31,39 @@ class _FirstSetupDescriptionScreenState
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: ImageIcon(
+            AssetImage(AppImages.iconback),
+            color: Theme.of(context).iconTheme.color,
+            size: 24,
+          ),
+        ),
         title: Text(
           'Customize your Assistant',
-          style: Theme.of(context).textTheme.headlineMedium, 
+          style: GoogleFonts.roboto(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Theme.of(context).textTheme.headlineMedium?.color,
+          ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              // TODO: Implement reset functionality
+              // viewModel.resetForm();
+            },
+            icon: ImageIcon(
+              AssetImage(AppImages.iconreset),
+              color: const Color(0xFF50C880),
+              size: 24,
+            ),
+          ),
+        ],
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor, 
         foregroundColor: Theme.of(context).appBarTheme.foregroundColor, 
         elevation: 0,
         centerTitle: true,
-        iconTheme: Theme.of(context).appBarTheme.iconTheme, 
       ),
       body: Consumer<FirstSetupDescriptionViewModel>(
         builder: (context, viewModel, child) {
@@ -57,7 +83,9 @@ class _FirstSetupDescriptionScreenState
                             value: option.value,
                             child: Text(
                               option.label,
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
                                 color: Theme.of(context).textTheme.bodyLarge?.color,
                               ),
                             ),
@@ -76,7 +104,9 @@ class _FirstSetupDescriptionScreenState
                             value: language,
                             child: Text(
                               language.name,
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
                                 color: Theme.of(context).textTheme.bodyLarge?.color,
                               ),
                             ),
@@ -91,6 +121,43 @@ class _FirstSetupDescriptionScreenState
                         label: 'Who will your chatbot be?',
                         controller: viewModel.chatbotRoleController,
                         hintText: 'Math Teacher',
+                        showHelpIcon: true,
+                        onHelpTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text(
+                                  'Help',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                content: Text(
+                                  'Define the role or profession of your AI assistant. For example: Math Teacher, Life Coach, Programming Mentor, etc.',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.of(context).pop(),
+                                    child: Text(
+                                      'OK',
+                                      style: GoogleFonts.roboto(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.primary,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                         onChanged: (_) => viewModel.onTextChanged(),
                       ),
 
@@ -101,6 +168,43 @@ class _FirstSetupDescriptionScreenState
                         controller: viewModel.expertDetailsController,
                         hintText: 'Teaching Math',
                         maxLines: 4,
+                        showHelpIcon: true,
+                        onHelpTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text(
+                                  'Help',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                content: Text(
+                                  'Provide detailed information about your expert\'s background, skills, and expertise. This helps the AI understand how to respond appropriately.',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.of(context).pop(),
+                                    child: Text(
+                                      'OK',
+                                      style: GoogleFonts.roboto(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.primary,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                         onChanged: (_) => viewModel.onTextChanged(),
                       ),
 
@@ -114,7 +218,9 @@ class _FirstSetupDescriptionScreenState
                             value: option.value,
                             child: Text(
                               option.label,
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
                                 color: Theme.of(context).textTheme.bodyLarge?.color,
                               ),
                             ),
@@ -152,11 +258,12 @@ class _FirstSetupDescriptionScreenState
                               Expanded(
                                 child: Text(
                                   viewModel.errorMessage,
-                                  style: TextStyle(
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
                                     color: Theme.of(context).brightness == Brightness.dark
                                         ? Colors.red[400] 
                                         : Colors.red[600], 
-                                    fontSize: 14,
                                   ),
                                 ),
                               ),
@@ -172,7 +279,6 @@ class _FirstSetupDescriptionScreenState
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   color: Theme.of(context).scaffoldBackgroundColor, 
-                  // Đã bỏ border ở đây
                 ),
                 child: SizedBox(
                   width: double.infinity,
@@ -200,11 +306,11 @@ class _FirstSetupDescriptionScreenState
                               ),
                             ),
                           )
-                        : const Text(
+                        : Text(
                             'Save',
-                            style: TextStyle(
+                            style: GoogleFonts.roboto(
                               fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                   ),
