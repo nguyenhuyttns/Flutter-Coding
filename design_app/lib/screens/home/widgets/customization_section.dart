@@ -1,4 +1,5 @@
 // lib/screens/home/widgets/customization_section.dart
+import 'package:design_app/config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,45 +31,54 @@ class CustomizationSection extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        GestureDetector(
-          onTap: onCustomizeTap,
-          child: Container(
-            width: double.infinity,
-            height: 100,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                begin: Alignment.centerLeft,  
-                end: Alignment.centerRight,
-                colors: [
-                  Color(0xFF36B466), 
-                  Color(0xFF1EB68B), 
+        Center( // Wrap bằng Center
+          child: GestureDetector(
+            onTap: onCustomizeTap,
+            child: Container(
+              width: 320,
+              height: 100,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  begin: Alignment.centerLeft,  
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color(0xFF36B466), 
+                    Color(0xFF1EB68B), 
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                children: [
+                  // Icon bên trái
+                  Padding(
+                    padding: const EdgeInsets.only(left: 24),
+                    child: Image.asset(
+                      AppImages.iconpen,
+                      width: 70,
+                      height: 70,
+                      color: Colors.white,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Icon(Icons.edit, color: Colors.white, size: 30);
+                      },
+                    ),
+                  ),
+                  
+                 
+                  const SizedBox(width: 24),
+                  
+                 
+                  Text(
+                    'CUSTOMIZATION',
+                    style: GoogleFonts.roboto(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.5,
+                      color: Colors.white,
+                    ),
+                  ),
                 ],
               ),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/Group 17.png',
-                  width: 80,
-                  height: 80,
-                  color: Colors.white,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.edit, color: Colors.white, size: 30);
-                  },
-                ),
-                const SizedBox(width: 12),
-                Text(
-                  'CUSTOMIZATION',
-                  style: GoogleFonts.roboto(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0.5,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
             ),
           ),
         ),

@@ -1,8 +1,9 @@
 // lib/screens/language/widgets/language_item.dart
 import 'package:flutter/material.dart';
 import 'package:country_flags/country_flags.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../models/language.dart';
-import '../../../config/constants.dart';
+
 
 class LanguageItem extends StatelessWidget {
   final Language language;
@@ -26,23 +27,23 @@ class LanguageItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: isSelected 
-              ? AppColors.primary 
+              ? const Color(0xFF50C880) // Màu xanh khi selected
               : Theme.of(context).cardColor, 
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isSelected 
-                ? AppColors.primary 
-                : isDarkMode 
-                    ? Colors.grey[600]! 
-                    : Colors.grey[300]!, 
+            color: const Color(0xFF50C880), // Viền luôn màu #50C880
             width: 1,
           ),
         ),
         child: Row(
           children: [
-            SizedBox(
+            Container(
               width: 32,
-              height: 24,
+              height: 32, // Thay đổi height để làm hình vuông
+              decoration: BoxDecoration(
+                shape: BoxShape.circle, // Hình tròn
+              ),
+              clipBehavior: Clip.hardEdge, // Clip flag theo hình tròn
               child: CountryFlag.fromCountryCode(
                 language.countryCode,
                 shape: const RoundedRectangle(4),
@@ -54,18 +55,15 @@ class LanguageItem extends StatelessWidget {
             Expanded(
               child: Text(
                 language.name,
-                style: TextStyle(
+                style: GoogleFonts.roboto(
                   fontSize: 16,
+                  fontWeight: FontWeight.w400, // w400 (normal)
                   color: isSelected 
-                      ? Colors.white 
+                      ? Colors.white // Text trắng khi selected
                       : Theme.of(context).textTheme.bodyLarge?.color, 
-                  fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
                 ),
               ),
             ),
-
-            if (isSelected)
-              const Icon(Icons.check, color: Colors.white, size: 20),
           ],
         ),
       ),

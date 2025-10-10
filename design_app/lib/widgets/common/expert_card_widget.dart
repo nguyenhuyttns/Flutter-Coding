@@ -53,7 +53,7 @@ class ExpertCardWidget extends StatelessWidget {
           
        
           Positioned(
-            bottom: 33, 
+            bottom: 15, 
             left: 0,
             right: 0,
             child: Text(
@@ -63,13 +63,6 @@ class ExpertCardWidget extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                shadows: [
-                  Shadow(
-                    offset: const Offset(1, 1),
-                    blurRadius: 2,
-                    color: Colors.black.withOpacity(0.8),
-                  ),
-                ],
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,

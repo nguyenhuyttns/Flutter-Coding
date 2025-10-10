@@ -1,6 +1,7 @@
 // lib/screens/language/language_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'language_viewmodel.dart';
 import 'widgets/language_item.dart';
 
@@ -23,16 +24,33 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Colors.black // Dark mode: màu đen
+          : const Color(0xFFF2F9FF), // Light mode: #F2F9FF
       appBar: AppBar(
         title: Text(
           'Language',
-          style: Theme.of(context).textTheme.headlineMedium, 
+          style: GoogleFonts.roboto(
+            fontSize: 20,
+            fontWeight: FontWeight.w800, // w800 (extra bold)
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white // Dark mode: text trắng
+                : Colors.black, // Light mode: text đen
+          ),
         ),
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor, 
-        foregroundColor: Theme.of(context).appBarTheme.foregroundColor, 
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black // Dark mode: AppBar đen
+            : const Color(0xFFF2F9FF), // Light mode: AppBar #F2F9FF
+        foregroundColor: Theme.of(context).brightness == Brightness.dark
+            ? Colors.white // Dark mode: foreground trắng
+            : Colors.black, // Light mode: foreground đen
         elevation: 0,
-        iconTheme: Theme.of(context).appBarTheme.iconTheme, 
+        iconTheme: IconThemeData(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white // Dark mode: icon trắng
+              : Colors.black, // Light mode: icon đen
+        ),
+        centerTitle: false, // Căn bên trái
         actions: [
           Consumer<LanguageViewModel>(
             builder: (context, viewModel, child) {
@@ -40,7 +58,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 onPressed: () => viewModel.saveAndGoToIntro(context),
                 icon: Icon(
                   Icons.check,
-                  color: Theme.of(context).iconTheme.color, 
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white // Dark mode: icon trắng
+                      : Colors.black, // Light mode: icon đen
                 ),
               );
             },

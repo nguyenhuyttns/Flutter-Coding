@@ -50,10 +50,10 @@ class AppImages {
   static const String logo = '$_imagePath/logo.png';
 
   // Intro images
-  static const String intro1 = '$_imagePath/intro1.png';
-  static const String intro2 = '$_imagePath/intro2.png';
-  static const String intro3 = '$_imagePath/intro3.png';
-  static const String intro4 = '$_imagePath/intro4.png';
+  static const String intro1 = '$_imagePath/Intro 1.png';
+  static const String intro2 = '$_imagePath/Intro 2.png';
+  static const String intro3 = '$_imagePath/Intro 3.png';
+  static const String intro4 = '$_imagePath/Intro 4.png';
 
   // First setup images
   static const String avatarFrame = '$_imagePath/avatakhung.png';
@@ -73,28 +73,19 @@ class AppImages {
   static const String avatar11 = '$_imagePath/avata11.PNG';
   static const String avatar12 = '$_imagePath/avata12.PNG';
 
-  static const String assistant1 = '$_imagePath/assistant1.PNG';
-  static const String assistant2 = '$_imagePath/assistant2.PNG';
-  static const String assistant3 = '$_imagePath/assistant3.PNG';
-  static const String assistant4 = '$_imagePath/assistant4.PNG';
-  static const String assistant5 = '$_imagePath/assistant5.PNG';
-  static const String assistant6 = '$_imagePath/assistant6.PNG';
-  static const String assistant7 = '$_imagePath/assistant7.PNG';
-  static const String assistant8 = '$_imagePath/assistant8.PNG';
-  static const String assistant9 = '$_imagePath/assistant9.PNG';
-  static const String assistant10 = '$_imagePath/assistant10.PNG';
 
-  static const String expert1 = '$_imagePath/expert1.png';
-  static const String expert2 = '$_imagePath/expert2.png';
-  static const String expert3 = '$_imagePath/expert3.png';
-  static const String expert4 = '$_imagePath/expert4.png';
-  static const String expert5 = '$_imagePath/expert5.png';
-  static const String expert6 = '$_imagePath/expert6.png';
-  static const String expert7 = '$_imagePath/expert7.png';
-  static const String expert8 = '$_imagePath/expert8.png';
-  static const String expert9 = '$_imagePath/expert9.png';
-  static const String expert10 = '$_imagePath/expert10.png';
+  static const String expert1 = '$_imagePath/e1.png';
+  static const String expert2 = '$_imagePath/ex2.png';
+  static const String expert3 = '$_imagePath/ex3.png';
+  static const String expert4 = '$_imagePath/ex4.png';
+  static const String expert5 = '$_imagePath/ex5.png';
+  static const String expert6 = '$_imagePath/ex6.png';
+  static const String expert7 = '$_imagePath/ex7.png';
+  static const String expert8 = '$_imagePath/ex8.png';
+  static const String expert9 = '$_imagePath/ex9.png';
+  static const String expert10 = '$_imagePath/ex10.png';
 
+  static const String iconsettings = '$_imagePath/settings.png';
   static const String iconhome = '$_imagePath/home.png';
   static const String iconclock = '$_imagePath/clock.png';
   static const String iconmessage = '$_imagePath/message.png';
@@ -104,6 +95,8 @@ class AppImages {
   static const String iconmail = '$_imagePath/iconmail.png';
   static const String iconsend = '$_imagePath/iconsend.png';
   static const String iconbin= '$_imagePath/iconbin.png';
+  static const String iconpen= '$_imagePath/iconpen.png';
+
 
   
 }

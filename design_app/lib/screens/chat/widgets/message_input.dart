@@ -25,7 +25,7 @@ class MessageInput extends StatelessWidget {
     required this.onSend,
     required this.onChanged,
     required this.canSend,
-    this.containerPadding = const EdgeInsets.all(20),
+    this.containerPadding = const EdgeInsets.all(15),
     this.textFieldMargin = const EdgeInsets.only(left: 10), 
     this.iconMargin = const EdgeInsets.only(right: 20),
     this.itemSpacing = 15,

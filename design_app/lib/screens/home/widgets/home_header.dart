@@ -1,4 +1,5 @@
 // lib/screens/home/widgets/home_header.dart
+import 'package:design_app/config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,7 +32,7 @@ class HomeHeader extends StatelessWidget {
           IconButton(
             onPressed: onSettingsTap,
             icon: ImageIcon(
-              AssetImage('assets/images/setting.png'),
+              AssetImage(AppImages.iconsettings),
               size: 26,
               color: Theme.of(context).iconTheme.color,
             ),
