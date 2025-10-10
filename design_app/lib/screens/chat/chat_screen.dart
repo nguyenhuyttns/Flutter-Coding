@@ -40,7 +40,9 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Colors.black // Dark mode: màu đen
+          : const Color(0xFFF2F9FF), // Light mode: #F2F9FF
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Consumer<ChatViewModel>(

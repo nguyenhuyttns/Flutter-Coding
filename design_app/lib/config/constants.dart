@@ -100,6 +100,10 @@ class AppImages {
   static const String iconmessage = '$_imagePath/message.png';
   static const String iconback = '$_imagePath/iconback.png';
   static const String iconreset = '$_imagePath/iconreset.png';
+  static const String iconnext = '$_imagePath/iconnext.png';
+  static const String iconmail = '$_imagePath/iconmail.png';
+  static const String iconsend = '$_imagePath/iconsend.png';
+  static const String iconbin= '$_imagePath/iconbin.png';
 
   
 }

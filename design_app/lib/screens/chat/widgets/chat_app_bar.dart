@@ -1,5 +1,6 @@
 // lib/screens/chat/widgets/chat_app_bar.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../widgets/common/feedback_bottom_sheet.dart';
 import '../../../config/constants.dart';
 
@@ -33,7 +34,7 @@ class ChatAppBar extends StatelessWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => Dialog(
-        backgroundColor: Theme.of(context).dialogTheme.backgroundColor, // Thay Colors.white
+        backgroundColor: Theme.of(context).dialogTheme.backgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -45,9 +46,10 @@ class ChatAppBar extends StatelessWidget {
               Text(
                 'Are you sure you want to delete this chat history?',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Theme.of(context).textTheme.bodyLarge?.color, 
+                style: GoogleFonts.roboto(
+                  fontSize: 14,
+                  color: const Color(0xFF898989), // Màu #898989
+                  fontWeight: FontWeight.w400,
                   height: 1.5,
                 ),
               ),
@@ -56,26 +58,31 @@ class ChatAppBar extends StatelessWidget {
 
               Row(
                 children: [
+                  // Cancel button
                   Expanded(
-                    child: OutlinedButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: Theme.of(context).dialogTheme.backgroundColor, 
-                        side: const BorderSide(
-                          color: AppColors.primary,
-                          width: 1,
+                    child: SizedBox(
+                      height: 48, // Cố định chiều cao
+                      child: OutlinedButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).dialogTheme.backgroundColor,
+                          side: const BorderSide(
+                            color: Color(0xFF50C880), // Viền màu #50C880
+                            width: 1,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8), // Bo nhẹ 4 góc
+                          ),
+                          padding: EdgeInsets.zero, // Bỏ padding mặc định
                         ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                      ),
-                      child: const Text(
-                        'Cancel',
-                        style: TextStyle(
-                          color: AppColors.primary,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                        child: Text(
+                          'Cancel',
+                          style: GoogleFonts.roboto(
+                            color: const Color(0xFF50C880), // Text màu #50C880
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
@@ -83,26 +90,31 @@ class ChatAppBar extends StatelessWidget {
 
                   const SizedBox(width: 12),
 
+                  // Delete button
                   Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        onDeletePressed?.call();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                    child: SizedBox(
+                      height: 48, // Cố định chiều cao
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          onDeletePressed?.call();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8), // Bo nhẹ 4 góc
+                          ),
+                          elevation: 0,
+                          padding: EdgeInsets.zero, // Bỏ padding mặc định
                         ),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        elevation: 0,
-                      ),
-                      child: const Text(
-                        'Delete',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                        child: Text(
+                          'Delete',
+                          style: GoogleFonts.roboto(
+                            color: Colors.white, // Màu trắng
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
@@ -121,50 +133,57 @@ class ChatAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Theme.of(context).appBarTheme.backgroundColor, 
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.2) 
-                : Colors.black.withOpacity(0.05), 
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black // Dark mode: màu đen
+            : const Color(0xFFF2F9FF), // Light mode: #F2F9FF
+        // Đã xóa hết boxShadow
       ),
       child: Row(
         children: [
+          // Back button with custom icon
           IconButton(
             onPressed: onBackPressed,
-            icon: Icon(
-              Icons.arrow_back,
-              color: Theme.of(context).appBarTheme.foregroundColor, 
+            icon: ImageIcon(
+              AssetImage(AppImages.iconback),
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white // Dark mode: icon trắng
+                  : Colors.black, // Light mode: icon đen
+              size: 24,
             ),
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(),
           ),
 
+          // Title
           Expanded(
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).textTheme.headlineMedium?.color, 
+              style: GoogleFonts.roboto(
+                fontSize: 20,
+                fontWeight: FontWeight.w700, // w700 (bold)
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white // Dark mode: text trắng
+                    : Colors.black, // Light mode: text đen
               ),
             ),
           ),
 
+          // Mail/Delete button
           IconButton(
             onPressed: showDeleteButton
                 ? () => _showDeleteConfirmation(context)
                 : () => _showFeedbackBottomSheet(context),
-            icon: Icon(
-              showDeleteButton ? Icons.delete_outline : Icons.inbox,
-              color: showDeleteButton 
-                  ? Colors.red 
-                  : Theme.of(context).iconTheme.color, 
+            icon: ImageIcon(
+              AssetImage(showDeleteButton 
+                  ? AppImages.iconbin 
+                  : AppImages.iconmail), 
+              color: showDeleteButton
+                  ? Colors.black 
+                  : Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white 
+                      : Colors.black, 
+              size: 24,
             ),
           ),
         ],

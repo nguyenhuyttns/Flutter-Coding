@@ -1,7 +1,7 @@
 // lib/screens/chat/widgets/message_list.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../models/message.dart';
-import '../../../config/constants.dart';
 import 'message_bubble.dart';
 
 class MessageList extends StatelessWidget {
@@ -23,10 +23,10 @@ class MessageList extends StatelessWidget {
           children: [
             Text(
               'Start conversation',
-              style: TextStyle(
-                fontSize: 18,
-                color: AppColors.primary,
-                fontWeight: FontWeight.w500,
+              style: GoogleFonts.roboto(
+                fontSize: 16,
+                color: const Color(0xFF50C880), // Màu #50C880
+                fontWeight: FontWeight.w700, // w700 (bold)
               ),
             ),
           ],

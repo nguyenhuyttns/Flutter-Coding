@@ -1,5 +1,6 @@
 // lib/screens/chat/widgets/message_input.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../config/constants.dart';
 
 class MessageInput extends StatelessWidget {
@@ -7,6 +8,16 @@ class MessageInput extends StatelessWidget {
   final VoidCallback onSend;
   final VoidCallback onChanged;
   final bool canSend;
+  final EdgeInsets containerPadding;
+  final EdgeInsets textFieldMargin;
+  final EdgeInsets iconMargin;
+  final double itemSpacing;
+  final double textFieldWidth;
+  final double textFieldHeight;
+  final double textFieldBorderRadius;
+  final EdgeInsets textFieldContentPadding;
+  final double iconSize;
+  final double iconContainerSize;
 
   const MessageInput({
     super.key,
@@ -14,79 +25,81 @@ class MessageInput extends StatelessWidget {
     required this.onSend,
     required this.onChanged,
     required this.canSend,
+    this.containerPadding = const EdgeInsets.all(20),
+    this.textFieldMargin = const EdgeInsets.only(left: 10), 
+    this.iconMargin = const EdgeInsets.only(right: 20),
+    this.itemSpacing = 15,
+    this.textFieldWidth = 250, 
+    this.textFieldHeight = 47,
+    this.textFieldBorderRadius = 12,
+    this.textFieldContentPadding = const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    this.iconSize = 55,
+    this.iconContainerSize = 55,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: containerPadding,
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor, 
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.3) 
-                : Colors.black.withOpacity(0.05), 
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
+        color: const Color(0xFFF2F9FF),
       ),
       child: Row(
         children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.grey[800] 
-                    : Colors.grey[100], 
-                borderRadius: BorderRadius.circular(25),
+          Container(
+            margin: textFieldMargin, // TextField sẽ lui vào trái 40px
+            width: textFieldWidth,
+            height: textFieldHeight,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(textFieldBorderRadius),
+              border: Border.all(
+                color: const Color(0xFF8F9DAA),
+                width: 1,
               ),
-              child: TextField(
-                controller: controller,
-                onChanged: (_) => onChanged(),
-                style: TextStyle(
-                  color: Theme.of(context).textTheme.bodyLarge?.color, 
-                ),
-                decoration: InputDecoration(
-                  hintText: 'Talk with AI Assistant',
-                  hintStyle: TextStyle(
-                    color: Theme.of(context).textTheme.bodyMedium?.color, 
-                  ),
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 12,
-                  ),
-                ),
-                maxLines: null,
-                textInputAction: TextInputAction.send,
-                onSubmitted: (_) => canSend ? onSend() : null,
+            ),
+            child: TextField(
+              controller: controller,
+              onChanged: (_) => onChanged(),
+              style: GoogleFonts.roboto(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey,
               ),
+              decoration: InputDecoration(
+                hintText: 'Talk with AI Assistant',
+                hintStyle: GoogleFonts.roboto(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
+                ),
+                border: InputBorder.none,
+                contentPadding: textFieldContentPadding,
+              ),
+              maxLines: null,
+              textInputAction: TextInputAction.send,
+              onSubmitted: (_) => canSend ? onSend() : null,
             ),
           ),
 
-          const SizedBox(width: 8),
+          SizedBox(width: itemSpacing),
 
-          GestureDetector(
-            onTap: canSend ? onSend : null,
-            child: Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: canSend 
-                    ? AppColors.primary 
-                    : Theme.of(context).brightness == Brightness.dark
-                        ? Colors.grey[600] 
-                        : Colors.grey[300], 
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                Icons.send,
-                color: canSend 
-                    ? Colors.white 
-                    : Theme.of(context).iconTheme.color, 
-                size: 20,
+          Container(
+            margin: iconMargin, // Icon sẽ lui vào phải 30px
+            child: GestureDetector(
+              onTap: canSend ? onSend : null,
+              child: Container(
+                width: iconContainerSize,
+                height: iconContainerSize,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF2F9FF),
+                  shape: BoxShape.circle,
+                ),
+                child: Image.asset(
+                  AppImages.iconsend,
+                  width: iconSize,
+                  height: iconSize,
+                ),
               ),
             ),
           ),

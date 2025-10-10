@@ -34,29 +34,13 @@ class MessageBubble extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(
         bottom: isLastMessage ? 16 : 8,
-        left: isUser ? 48 : 0,
-        right: isUser ? 0 : 48,
+        left: isUser ? 48 : 16, // Điều chỉnh margin vì không còn avatar
+        right: isUser ? 16 : 48, // Điều chỉnh margin vì không còn avatar
       ),
       child: Row(
         mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          if (!isUser) ...[
-            CircleAvatar(
-              radius: 16,
-              backgroundColor: AppColors.primary,
-              child: const Text(
-                'AI',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(width: 8),
-          ],
-
           Flexible(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -165,21 +149,6 @@ class MessageBubble extends StatelessWidget {
                     ),
             ),
           ),
-
-          if (isUser) ...[
-            const SizedBox(width: 8),
-            CircleAvatar(
-              radius: 16,
-              backgroundColor: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.grey[600] 
-                  : Colors.grey[300], 
-              child: Icon(
-                Icons.person,
-                size: 16,
-                color: Theme.of(context).iconTheme.color, 
-              ),
-            ),
-          ],
         ],
       ),
     );

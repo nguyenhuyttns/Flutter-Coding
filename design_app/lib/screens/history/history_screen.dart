@@ -5,7 +5,6 @@ import 'history_viewmodel.dart';
 import 'widgets/history_header.dart';
 import 'widgets/history_tabs.dart';
 import 'widgets/expert_history_list.dart';
-import 'widgets/chichi_history_item.dart';
 import '../home/widgets/bottom_navigation.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -27,7 +26,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor, 
+      backgroundColor: const Color(0xFFF2F9FF), // Màu background cố định #F2F9FF
       body: SafeArea(
         child: Consumer<HistoryViewModel>(
           builder: (context, viewModel, child) {
@@ -38,21 +37,17 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 HistoryTabs(
                   selectedIndex: viewModel.selectedTabIndex,
                   onTabSelected: viewModel.selectTab,
+                  onChiChiTap: () => viewModel.openChiChiChat(context), // Direct navigation
                 ),
 
+                // Chỉ hiển thị Expert List
                 Expanded(
-                  child: viewModel.selectedTabIndex == 0
-                      ? ExpertHistoryList(
-                          histories: viewModel.expertHistories,
-                          onHistoryTap: (historyId, expertId) =>
-                              viewModel.openExpertChat(context, expertId),
-                          onDeleteTap: viewModel.deleteExpertHistory,
-                        )
-                      : ChiChiHistoryItem(
-                          hasHistory: viewModel.hasChiChiHistory,
-                          onTap: () => viewModel.openChiChiChat(context),
-                          onDelete: viewModel.deleteChiChiHistory,
-                        ),
+                  child: ExpertHistoryList(
+                    histories: viewModel.expertHistories,
+                    onHistoryTap: (historyId, expertId) =>
+                        viewModel.openExpertChat(context, expertId),
+                    onDeleteTap: viewModel.deleteExpertHistory,
+                  ),
                 ),
               ],
             );

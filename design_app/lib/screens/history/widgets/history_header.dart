@@ -1,5 +1,6 @@
 // lib/screens/history/widgets/history_header.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HistoryHeader extends StatelessWidget {
   const HistoryHeader({super.key});
@@ -9,23 +10,17 @@ class HistoryHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
-        color: Theme.of(context).appBarTheme.backgroundColor, 
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.2) 
-                : Colors.black.withOpacity(0.05), 
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black // Dark mode: màu đen
+            : const Color(0xFFF2F9FF), // Light mode: #F2F9FF
+        // Đã bỏ boxShadow
       ),
       child: Center(
         child: Text(
           'History',
-          style: TextStyle(
+          style: GoogleFonts.roboto(
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700, // w700 (bold)
             color: Theme.of(context).textTheme.headlineMedium?.color, 
           ),
         ),
@@ -33,3 +28,4 @@ class HistoryHeader extends StatelessWidget {
     );
   }
 }
+
